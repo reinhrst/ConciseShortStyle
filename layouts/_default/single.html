@@ -1,0 +1,10 @@
+<!--- ok, one day I'll find out why.... I have the opposite of this
+    https://discourse.gohugo.io/t/baseof-html-block-templates-and-list-types-results-in-empty-pages/5612/20
+    In my case this page only works if there IS something non-define on lne 1 :(
+    --->
+{{ define "main" }}
+<h1>{{ .Title }}</h1>
+{{ partial "metadata.html" . }}
+<br><br>
+{{ .Content }}
+{{ end }}
