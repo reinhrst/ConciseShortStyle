@@ -1,0 +1,52 @@
+div.metadata {
+    position: sticky;
+    top: calc(var(--header-height) - .7em);
+    background-color: var(--page-background-color);
+    z-index: 2;
+    padding-bottom: .8em;
+
+    font-family: var(--metadata-font);
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    font-size: .8em;
+    margin-bottom: 2em;
+    .metadata-item:not(.categories-and-tags) {
+        white-space: nowrap;
+        margin: 0 .2em;
+        &:not(:first-child)::before {
+            content: "\2022";
+        }
+    }
+    .metadata-item.categories-and-tags {
+        flex-basis: 100%;
+        border-bottom: 1px solid green;
+        > a {
+            text-decoration: inherit;
+            color: var(--item-color);
+            display: inline-block;
+            border-radius: .4em;
+            transition: color .5s, background-color .5s;
+            background-color: var(--page-background-color);
+            padding: .1em .2em;
+            &.tag-button {
+                --item-color: var(--tag-color);
+            }
+            &.category-button {
+                --item-color: var(--category-color);
+            }
+            &:hover {
+                color: white;
+                background-color: var(--item-color);
+            }
+            &::before {
+                content: "#";
+            }
+            &:not(:last-child)::after {
+                content: ",";
+            }
+        }
+    }
+}
+
+

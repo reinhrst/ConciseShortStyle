@@ -53,7 +53,7 @@ page {
                     }
                     position: sticky;
                     top: calc(var(--header-height) / 2 - 0.9em / 2);
-                    z-index: 2;
+                    z-index: 3;
                     border-left-color: $COLOR-TRANSPARENT;
                     color: $COLOR-TRANSPARENT;
                     &::first-line {

@@ -17,6 +17,8 @@ $header-background-color: #FFFFFF;
     --site-logo-width: 3.4rem;
     /* if you choose something else, your titles will shift */
     --left-column-width: var(--site-logo-width);
+    --tag-color: #7C8C7B;
+    --category-color: #5A6959;
 
 
 
@@ -49,49 +51,6 @@ body {
 }
 
 
-div.metadata {
-    font-family: var(--metadata-font);
-    display: flex;
-    justify-content: flex-start;
-    font-size: .7em;
-    margin-bottom: 2em;
-    .metadata-item:not(.categories-and-tags) {
-        white-space: nowrap;
-        margin: 0 .2em;
-        &:not(:first-child)::before {
-            content: "\2022";
-        }
-    }
-    .metadata-item.categories-and-tags {
-        margin-top: -.3em;
-        flex-grow: 1;
-        text-align: right;
-        > a {
-            text-decoration: inherit;
-            color: var(--item-color);
-            display: inline-block;
-            border: 2.5px solid var(--item-color);
-            border-radius: .4em;
-            padding: 0 .2em;
-            margin: .2em;
-            transition: color .5s, background-color .5s;
-            background-color: var(--page-background-color);
-            &.tag-button {
-                --item-color: blue;
-            }
-            &.category-button {
-                --item-color: red;
-            }
-            &:hover {
-                color: white;
-                background-color: var(--item-color);
-            }
-            &::before {
-                content: "#";
-            }
-        }
-    }
-}
-
 @import "header.scss";
 @import "page.scss";
+@import "metadata.scss";
