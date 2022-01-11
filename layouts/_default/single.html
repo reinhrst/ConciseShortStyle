@@ -1,10 +1,19 @@
-<!--- ok, one day I'll find out why.... I have the opposite of this
-    https://discourse.gohugo.io/t/baseof-html-block-templates-and-list-types-results-in-empty-pages/5612/20
-    In my case this page only works if there IS something non-define on lne 1 :(
-    --->
 {{ define "main" }}
-<h1>{{ .Title }}</h1>
-{{ partial "metadata.html" . }}
-<br><br>
-{{ .Content }}
+{{ with (.Resources.GetMatch "header") }}
+    <img class="headerimage" src="{{ .RelPermalink }}">
+{{ end }}
+<div class="maincolumns">
+    <div class="sitelogo">
+        {{ .Site.Title }}
+    </diV>
+    <article>
+        <div class="header-backup" aria-hidden="true">
+            <h1 class="backup">{{ .Title }}</h1>
+        </div>
+        <h1 class="float-into-header">{{ .Title }}</h1>
+        {{ partial "metadata.html" . }}
+        {{ .Content }}
+    </article>
+    <toc />
+</div>
 {{ end }}

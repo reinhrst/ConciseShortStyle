@@ -1,13 +1,28 @@
-Metadata:
-{{ $dateTime := .PublishDate.Format "2006-01-02" }}
-{{ $dateFormat := .Site.Params.dateFormat | default "Jan 2, 2006" }}
-<i data-feather="calendar"></i>
-<time datetime="{{ $dateTime }}">{{ .PublishDate.Format $dateFormat }}</time>
-{{ with .Params.tags }}
-<i data-feather="tag"></i>
-{{ range . }}
-{{ $href := print (absURL "tags/") (urlize .) }}
-<a class="btn btn-sm btn-outline-dark tag-btn" href="{{ $href }}">{{ . }}</a>
-{{ end }}
-{{ end }}
+<div class="metadata">
+    <div class="metadata-item published">
+        {{ $dateTime := .PublishDate.Format "2006-01-02" }}
+        {{ $dateFormat := .Site.Params.dateFormat | default "Jan 2, 2006" }}
+        <i data-feather="calendar"></i>
+        <time datetime="{{ $dateTime }}">{{ .PublishDate.Format $dateFormat }}</time>
+    </div>
+    <div class="metadata-item readingtime">
+        {{.Page.ReadingTime}}
+        {{ cond (gt .ReadingTime 1) "minutes" "minute" }}
+    </div>
+
+    <div class="metadata-item categories-and-tags">
+        {{ with .Params.categories }}
+            {{ range . }}
+                {{ $href := print (absURL "categories/") (urlize .) }}
+                <a class="category-button" href="{{ $href }}">{{ . }}</a>
+            {{ end }}
+        {{ end }}
+        {{ with .Params.tags }}
+            {{ range . }}
+                {{ $href := print (absURL "tags/") (urlize .) }}
+                <a class="tag-button" href="{{ $href }}">{{ . }}</a>
+            {{ end }}
+        {{ end }}
+    </div>
+</div>
 

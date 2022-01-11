@@ -1,0 +1,77 @@
+
+.menu {
+    color: var(--menu-color);
+    padding: 0 0 0 .5em;
+    font-weight: 200;
+    @include blindFadeIn;
+    overflow: hidden;
+    height: var(--header-height);
+    --more-width: .5em;
+    box-sizing: border-box;
+    transition: height .3s, padding .3s;
+    background-color: var(--header-background-color);
+
+    .menubox {
+        display: flex;
+        box-sizing: border-box;
+        flex-wrap: wrap;
+        justify-content: flex-end;
+        max-height: 200%;
+        position: relative;
+        margin-right: calc(var(--more-width) + var(--page-scrollbar-width));
+        border: 2px solid var(--header-background-color);
+        transition: border-color .3s, padding .3s margin .3s;
+        a.menu-item {
+            display: inline-block;
+            padding: 0 .4em;
+            white-space: nowrap;
+            box-sizing: border-box;
+            height: var(--header-height);
+            transition: background-position .2s;
+            background-image: linear-gradient(
+                var(--header-background-color) 50%,
+                var(--menu-hover-background-color) 50%);
+            background-size: 200% 200%;
+            &:hover {
+                background-position: -100% 100%;
+            }
+        }
+    }
+
+    .menu-item-more {
+        position: absolute;
+        /* mounting it to bottom means it's hidden if there is only 1 line */
+        bottom: calc(var(--header-height) - .1em);
+        right: calc(-1 * var(--more-width));
+    }
+}
+
+input[type="checkbox"]#openverticalmenu {
+    position: absolute;
+    visibility: hidden;
+
+    &:checked + .menu {
+        height: calc(var(--nr-menu-items) * var(--header-height) + 2 * (
+        .2em /* padding outer */ + .3em /* padding inner */ + 1px /* border */));
+        padding: .2em;
+        > .menubox {
+            flex-direction: column;
+            border-color: var(--menu-hover-background-color);
+            padding: .3em;
+            padding-right: calc(.3em + var(--more-width) + var(--page-scrollbar-width));
+            margin-right: 0;
+            .menu-item {
+            background-image: linear-gradient(
+                90deg,
+                var(--header-background-color) 50%,
+                var(--menu-hover-background-color) 50%);
+            }
+        }
+
+        .menu-item-more {
+            bottom: unset; /* unnecessary; if top and bottom and height are set */
+            right: var(--page-scrollbar-width);
+            top: .1em;
+        }
+    }
+}

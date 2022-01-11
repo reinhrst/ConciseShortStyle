@@ -1,14 +1,26 @@
-<div id="nav-border" class="container">
-    <nav id="nav" class="nav justify-content-center">
-        {{ range .Site.Menus.main }}
-            <a class="nav-link" href="{{ .URL }}">
-                {{ if .Pre }}
-                    {{ $icon := printf "<i data-feather=\"%s\"></i> " .Pre | safeHTML }}
-                    {{ $icon }}
-                {{ end }}
-                {{ $text := print .Name | safeHTML }}
-                {{ $text }}
-            </a>
-        {{ end }}
-    </nav>
-</div>
+<header class="background">
+</header>
+<header>
+    <div class="sitelogo">
+        <a href="{{ ref . "/" }}">
+            {{ .Site.Title }}
+        </a>
+    </div>
+    <div class="title"></div>
+    <input type="checkbox" id="openverticalmenu" >
+    <div class="menu" style="--nr-menu-items: {{ len .Site.Menus.main}}">
+        <div class="menubox">
+            {{ range .Site.Menus.main }}
+                <a class="menu-item" href="{{ .URL }}">
+                    {{ if .Pre }}
+                        {{ $icon := printf "<i data-feather=\"%s\"></i> " .Pre | safeHTML }}
+                        {{ $icon }}
+                    {{ end }}
+                    {{ $text := print .Name | safeHTML }}
+                    {{ $text }}
+                </a>
+            {{ end }}
+            <label class="menu-item-more" for="openverticalmenu">&#x22EE;</label>
+        </div>
+    </div>
+</header>
