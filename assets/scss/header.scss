@@ -18,6 +18,7 @@ header {
     }
     &.background {
         z-index: 1;
+        border-bottom: var(--head-bottom-border);
     }
     &:not(.background) {
         display: flex;

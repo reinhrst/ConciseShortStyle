@@ -1,5 +1,5 @@
 $COLOR-TRANSPARENT: #00000000;
-$header-background-color: #FFFFFF;
+$header-background-color: #EEEEEE;
 :root {
     /* max distance we should stay from right with clickable items*/
     --page-scrollbar-width: 16px;
@@ -19,6 +19,7 @@ $header-background-color: #FFFFFF;
     --left-column-width: var(--site-logo-width);
     --tag-color: #7C8C7B;
     --category-color: #5A6959;
+    --head-bottom-border: 1px solid green;
 
 
 

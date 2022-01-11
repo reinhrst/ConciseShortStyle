@@ -14,13 +14,13 @@ page {
         .left-column {
             width: var(--left-column-width);
             margin: 0 .2em;
-            overflow: hidden;
+            overflow-x: hidden;
             flex-shrink: 0;
         }
         article {
-            > * {
+            > *:not(.metadata) {
                 max-width: 100%;
-                overflow: scroll;
+                overflow-x: scroll;
             }
             min-width: 0;
             flex-grow: 1;

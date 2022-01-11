@@ -1,9 +1,22 @@
+div.pre-metadata {
+    height: .8em;
+    border: var(--head-bottom-border);
+    border-bottom-width: 0;
+    background-color: var(--header-background-color);
+}
+
 div.metadata {
     position: sticky;
-    top: calc(var(--header-height) - .7em);
-    background-color: var(--page-background-color);
+    top: calc(var(--header-height));
+    background-color: var(--header-background-color);
     z-index: 2;
-    padding-bottom: .8em;
+    padding: 0 1em;
+    border: var(--head-bottom-border);
+    border-top-width: 0;
+    > * {
+        position: relative;
+        top: -.4em;
+    }
 
     font-family: var(--metadata-font);
     display: flex;
@@ -20,14 +33,13 @@ div.metadata {
     }
     .metadata-item.categories-and-tags {
         flex-basis: 100%;
-        border-bottom: 1px solid green;
         > a {
             text-decoration: inherit;
             color: var(--item-color);
             display: inline-block;
             border-radius: .4em;
             transition: color .5s, background-color .5s;
-            background-color: var(--page-background-color);
+            background-color: var(--header-background-color);
             padding: .1em .2em;
             &.tag-button {
                 --item-color: var(--tag-color);
