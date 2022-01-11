@@ -1,22 +1,6 @@
-.sitelogo {
-    /* needs to be outside of header tag, since we also use it to determine the
-     * width of the left column in the page
-     */
-    @include blindFadeIn;
-    margin: 0 .2em;
-    font-size: 1.1rem;
-    font-weight: 800;
-    font-family: var(--header-font);
-    color: var(--site-logo-color);
-    page & {
-        visibility: hidden;
-    }
-}
-
 header {
     font-family: var(--header-font);
     line-height: var(--header-height);
-    vertical-align: middle;
 
     display: block;
     position: fixed;
@@ -46,6 +30,20 @@ header {
         var(--header-background-color-transparent) 70%,
         var(--header-background-color));
     }
-    @import "menu.scss"
+    @import "menu.scss";
 
+    .sitelogo {
+        @include blindFadeIn;
+        margin: 0 .2em;
+        flex-shrink: 0;
+        font-size: 1.1rem;
+        font-weight: 800;
+        font-family: var(--header-font);
+        color: var(--site-logo-color);
+        width: var(--site-logo-width);
+        overflow: hidden;
+        page & {
+            visibility: hidden;
+        }
+    }
 }

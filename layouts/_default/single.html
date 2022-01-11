@@ -2,18 +2,18 @@
 {{ with (.Resources.GetMatch "header") }}
     <img class="headerimage" src="{{ .RelPermalink }}">
 {{ end }}
-<div class="maincolumns">
-    <div class="sitelogo">
-        {{ .Site.Title }}
-    </diV>
+<div class="main-columns">
+    <div class="left-column"></div>
     <article>
-        <div class="header-backup" aria-hidden="true">
-            <h1 class="backup">{{ .Title }}</h1>
-        </div>
-        <h1 class="float-into-header">{{ .Title }}</h1>
+        <span class="sliding-into-header-title">
+            <h1 class="show-possible-second-line" aria-hidden="true">
+                {{ .Title }}
+            </h1>
+            <h1 class="slide-into-header">{{ .Title }}</h1>
+        </span>
         {{ partial "metadata.html" . }}
         {{ .Content }}
     </article>
-    <toc />
+    <toc></toc>
 </div>
 {{ end }}

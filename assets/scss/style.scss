@@ -1,3 +1,4 @@
+$COLOR-TRANSPARENT: #00000000;
 $header-background-color: #FFFFFF;
 :root {
     /* max distance we should stay from right with clickable items*/
@@ -13,6 +14,9 @@ $header-background-color: #FFFFFF;
     --menu-hover-background-color: #E0E7E6;
     --article-head-color: #384537;
     --article-head-accentuator-color: #384537;
+    --site-logo-width: 3.4rem;
+    /* if you choose something else, your titles will shift */
+    --left-column-width: var(--site-logo-width);
 
 
 
@@ -38,60 +42,12 @@ body {
     color: var(--text-color);
 }
 
-page {
-    display: block;
-    margin-top: var(--header-height);
-    img.headerimage:first-child {
-        width: 100%;
-    }
-}
-div.maincolumns {
-    display: flex;
-}
 
 @keyframes blindIn {
     from {transform: scaleY(0);}
     to {transform: scaleY(1);}
 }
 
-h1 {
-    @include blindFadeIn;
-    font-family: var(--header-font);
-    vertical-align: middle;
-    font-size: 1em;
-    color: var(--article-head-color);
-}
-
-h1.float-into-header {
-    &::before {
-        content: "\2500";
-        display: inline-block;
-        width: 1em;
-        color: var(--article-head-accentuator-color);
-    }
-    position: sticky;
-    top: calc(var(--header-height) / 2 - 0.9em / 2);
-    line-height: 1em;
-    z-index: 2;
-    color: rgba(0, 0, 0, 0);  /* exact colour doesn't matter; 100% transparent */
-    &::first-line {
-        color: var(--article-head-color);
-    }
-}
-
-.header-backup {
-    position: relative;
-    height: 0;
-    > h1 {
-        margin-left: -1px;
-        border-left: .8em solid var(--article-head-accentuator-color);
-        padding-left: calc(1em - .7em + 1px);
-        position: absolute;
-        &::first-line {
-            color: rgba(0, 0, 0, 0);
-        }
-    }
-}
 
 div.metadata {
     font-family: var(--metadata-font);
@@ -137,4 +93,5 @@ div.metadata {
     }
 }
 
-@import "header.scss"
+@import "header.scss";
+@import "page.scss";
