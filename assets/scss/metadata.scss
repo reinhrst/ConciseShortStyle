@@ -11,11 +11,16 @@ div.metadata {
     font-variant: tabular-nums;
     padding-right: .2em;
 
+    color: var(--tag-color);
 
     .metadata-item.published {
+        color: var(--published-color);
+        width: 110%;
         year {
-            font-size: 1.8em;
+            font-size: 3em;
             font-weight: 800;
+            padding-bottom: 0;
+            line-height: .8em;
         }
         year, date {
             display: block;
@@ -23,12 +28,14 @@ div.metadata {
             text-align: right;
             padding-right: .2rem;
         }
+        date {
+            line-height: .7em;
+        }
     }
 
     .metadata-item:not(.categories-and-tags) {
         white-space: nowrap;
         overflow: hidden;
-        color: var(--tag-color);
     }
     .metadata-item.categories-and-tags {
         display: flex;

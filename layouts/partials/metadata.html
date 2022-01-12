@@ -2,7 +2,7 @@
     <div class="metadata-item published">
         {{ $dateTime := .PublishDate.Format "2006-01-02" }}
         <time datetime="{{ $dateTime }}">
-            <year>{{.PublishDate.Format "2006" }}</year>
+            <year>&#x2019;{{.PublishDate.Format "06" }}</year>
             <date>{{.PublishDate.Format "Jan 2" }}</date>
     </div>
     <div class="metadata-item readingtime">
