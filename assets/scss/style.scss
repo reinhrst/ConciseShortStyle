@@ -7,6 +7,7 @@ $header-background-color: #EEEEEE;
     --header-height: 2.4rem;
     --header-font: Arial, Helvetica, sans-serif;
     --metadata-font: Arial, Helvetica, sans-serif;
+    --toc-font: Arial, Helvetica, sans-serif;
     --body-font: Georgia,Times,serif;
     --text-color: black;
     --site-logo-color: black;
@@ -17,6 +18,7 @@ $header-background-color: #EEEEEE;
     --site-logo-width: 3.4rem;
     /* if you choose something else, your titles will shift */
     --left-column-width: var(--site-logo-width);
+    --toc-width: 10rem;
     --published-color: hsla(121, 10%, 50%);
     --tag-color: #7C8C7B;
     --category-color: #5A6959;
@@ -57,6 +59,14 @@ body {
 }
 
 
+:target::before {
+    // targets of links, scroll beyond header
+    content: "";
+    display: block;
+    height: var(--header-height);
+    margin-top: calc(-1 * var(--header-height));
+}
+
+
 @import "header.scss";
 @import "page.scss";
-@import "metadata.scss";

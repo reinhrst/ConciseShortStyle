@@ -1,0 +1,66 @@
+toc {
+    font-size: .75em;
+    font-family: var(--toc-font);
+
+    width: var(--toc-width);
+    flex-grow: 0;
+    flex-shrink: 0;
+    > div.sticker {
+        display: flex;
+        position: sticky;
+        top: var(--header-height);
+        > ul {
+            list-style-type: none;
+            border: 1px solid black;
+            border-radius: 1em;
+            margin-right: .5em;
+            padding: .2em 0;
+            width: calc(100% - .5em);
+            box-sizing: border-box;
+            border-top-width: calc(1.5em + 1px);
+            li {
+                height: 1.3em;
+                line-height: 1.3em;
+                display: block;
+                &:first-child {
+                    padding: 0 .5em;
+                    margin-top: -1.5em;
+                    color: white;
+                }
+                &:not(:first-child) {
+                    border-bottom: 1px dotted black;
+                    a {
+                        padding-left: var(--toc-indent);
+                        background-image: linear-gradient(
+                            90deg,
+                            var(--page-background-color) 50%,
+                            var(--menu-hover-background-color) 50%);
+                        background-size: 200% 200%;
+                        transition: background-position .5s;
+                        &:hover {
+                            position: absolute;
+                            right: calc(.5em + 1px);
+                            width: max-content;
+                            background-position: -100% 100%;
+                        }
+                    }
+                }
+            }
+            a {
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+                text-decoration: inherit;
+                color: inherit;
+                display: block;
+                min-width: calc(var(--toc-width) - var(--toc-indent) - .5em - 2px);
+            }
+            @for $h from 0 through 6 {
+                li.toc-h#{$h} {
+                    --toc-indent: #{$h * .5em};
+                }
+            }
+        }
+    }
+}
+

@@ -1,4 +1,10 @@
-markup.highlight.noClasses=false
+[markup]
+  [markup.tableOfContents]
+    endLevel = 3
+    ordered = false
+    startLevel = 0
+  [highlight]
+    noClasses = false
 
 [params]
     progress_bar_height_pixels = 3

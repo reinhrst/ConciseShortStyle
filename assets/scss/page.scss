@@ -12,6 +12,8 @@ page {
         width: 100vw;
         padding-top: 1.5em;
 
+        @import "metadata.scss";
+
         .progress {
             width: 0;
             clip-path: polygon( 0 var(--progress-bar-offset), 0 calc(var(--progress-bar-offset) + 100%), 100vw calc(var(--progress-bar-offset) + 100%), 100vw Max(var(--progress-bar-offset), calc(100% - 100vh + var(--header-height) + var(--progress-bar-offset))));
@@ -98,10 +100,6 @@ page {
                 }
             }
         }
-        toc {
-            width: 6rem;
-            flex-grow: 0;
-            flex-shrink: 0;
-        }
+        @import "toc.scss";
     }
 }
