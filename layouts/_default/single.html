@@ -3,9 +3,11 @@
     <img class="headerimage" src="{{ .RelPermalink }}">
 {{ end }}
 <div class="main-columns">
-    <span class="progress">
-        <div></div>
-    </span>
+    {{ range $index, $num := (mul 2 site.Params.progress_bar_height_pixels | seq) }}
+        <span class="progress" style="--progress-bar-offset: {{div $index 2.0}}px;">
+            <div></div>
+        </span>
+    {{ end }}
     <span class="left-column">
         {{ partial "metadata.html" . }}
     </span>

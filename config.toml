@@ -1,1 +1,4 @@
 markup.highlight.noClasses=false
+
+[params]
+    progress_bar_height_pixels = 3
