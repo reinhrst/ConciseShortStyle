@@ -12,6 +12,26 @@ page {
         width: 100vw;
         padding-top: 1.5em;
 
+        .progress, .progresshide {
+            width: 0;
+            display: flex;
+            justify-content: space-around;
+            flex-direction: column;
+            > div {
+                background-color: red;
+                height: 4px;
+                position: sticky;
+                top: var(--header-height);
+                margin-left: calc(var(--progress-part-nr) / var(--total-progress-parts) * 100vw);
+                width: calc(1 / var(--total-progress-parts) * 100vw + 1px);
+                z-index: -1;
+            }
+        }
+        .progresshide > div {
+            top: 0;
+            background-color: var(--page-background-color);
+                width: calc((var(--progress-part-nr) + 1) / var(--total-progress-parts) * 100vw);
+        }
         .left-column {
             width: var(--left-column-width);
             margin: 0 .2em;
