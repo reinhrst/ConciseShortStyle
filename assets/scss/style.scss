@@ -19,10 +19,10 @@ $header-background-color: #EEEEEE;
     --left-column-width: var(--site-logo-width);
     --tag-color: #7C8C7B;
     --category-color: #5A6959;
-    --head-bottom-border: 1px solid green;
-
-
-
+    --head-bottom-border: 0px solid black;
+    --code-color: hsl(121, 10%, 90%);
+    --caption-color: hsl(121, 10%, 50%);
+    --link-color: hsl(250, 70%, 40%);
 
     --header-background-color: #{$header-background-color};
     --header-background-color-transparent: #{change-color($header-background-color, $alpha: 0)};

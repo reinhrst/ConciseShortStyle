@@ -3,7 +3,9 @@
     <img class="headerimage" src="{{ .RelPermalink }}">
 {{ end }}
 <div class="main-columns">
-    <div class="left-column"></div>
+    <span class="left-column">
+        {{ partial "metadata.html" . }}
+    </span>
     <article>
         <span class="sliding-into-header-title">
             <h1 class="show-possible-second-line" aria-hidden="true">
@@ -11,8 +13,9 @@
             </h1>
             <h1 class="slide-into-header">{{ .Title }}</h1>
         </span>
-        {{ partial "metadata.html" . }}
-        {{ .Content }}
+        <div class="single-content">
+            {{ .Content }}
+        </div>
     </article>
     <toc></toc>
 </div>
