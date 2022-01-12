@@ -3,16 +3,8 @@
     <img class="headerimage" src="{{ .RelPermalink }}">
 {{ end }}
 <div class="main-columns">
-    {{ $steps := 50 }}
-    <span class="progress" style="--total-progress-parts: {{$steps}}">
-    {{ range $index, $num := (seq $steps) }}
-        <div style="--progress-part-nr: {{ $index }}"></div>
-    {{ end }}
-    </span>
-    <span class="progresshide" style="--total-progress-parts: {{$steps}}">
-    {{ range $index, $num := (seq $steps) }}
-        <div style="--progress-part-nr: {{ $index }}"></div>
-    {{ end }}
+    <span class="progress">
+        <div></div>
     </span>
     <span class="left-column">
         {{ partial "metadata.html" . }}

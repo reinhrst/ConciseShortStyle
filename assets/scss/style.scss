@@ -23,6 +23,8 @@ $header-background-color: #EEEEEE;
     --code-color: hsl(121, 10%, 90%);
     --caption-color: hsl(121, 10%, 50%);
     --link-color: hsl(250, 70%, 40%);
+    --progress-bar-color: hsl(0, 20%, 70%);
+    --progress-bar-height: .1em;
 
     --header-background-color: #{$header-background-color};
     --header-background-color-transparent: #{change-color($header-background-color, $alpha: 0)};
