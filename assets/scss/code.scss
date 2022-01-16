@@ -1,12 +1,29 @@
-div.highlight > pre > code, > pre > code {
+pre > code {
     padding: .5em;
-    background-color: var(--code-color);
+    background-color: var(--code-background-color);
     display: block;
     width: 100%;
     overflow-x: scroll;
+    position: relative;
+    &:hover {
+        width: calc(100% + var(--toc-width));
+        z-index: 1;
+    }
+    &::after {
+        content: "";
+        position: absolute;
+        background: linear-gradient(
+            90deg,
+            var(--code-background-color-transparent),
+            var(--code-background-color));
+        top: 0;
+        bottom: 0;
+        right: 0;
+        width: 1em;
+    }
 }
 
-> :not(pre, div.highlight) code {
+:not(pre ) > code {
     background-color: var(--code-color);
     padding: .1em .3em;
 }

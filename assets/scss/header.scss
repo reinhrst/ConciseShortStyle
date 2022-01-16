@@ -17,7 +17,7 @@ header {
         background-color: var(--header-background-color);
     }
     &.background {
-        z-index: 1;
+        z-index: 2;
         border-bottom: var(--head-bottom-border);
     }
     &:not(.background) {

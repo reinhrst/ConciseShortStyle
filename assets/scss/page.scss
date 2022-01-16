@@ -1,4 +1,7 @@
 page {
+    h1, h2, h3, h4, h5, h6 {
+        font-family: var(--header-font);
+    }
     width: 100vw;
     display: block;
     margin-top: var(--header-height);
@@ -66,15 +69,15 @@ page {
                     position: sticky;
                     top: calc(var(--header-height) / 2 - 0.9em / 2);
                     z-index: 3;
-                    border-left-color: $COLOR-TRANSPARENT;
-                    color: $COLOR-TRANSPARENT;
+                    border-left-color: transparent;
+                    color: transparent;
                     &::first-line {
                         color: var(--article-head-color);
                     }
                 }
             }
             .single-content {
-                margin: .5em;
+                margin: 1em;
                 @import "code.scss";
                 a {
                     text-decoration: inherit;
@@ -98,8 +101,12 @@ page {
                         }
                     }
                 }
+                >details {
+                    margin: 2em 1em;
+                }
             }
         }
         @import "toc.scss";
     }
+    @import "notes.scss";
 }

@@ -1,8 +1,12 @@
+{{ $startLevel := .Site.Params.tocStartLevel | default 2 }}
+{{ $endLevel := .Site.Params.tocEndLevel | default 3 }}
+{{ $tagRe := printf "h[%d-%d]" $startLevel $endLevel }}
+{{ $tocRe := printf "<%s.*?>(.|\n])+?</%s>" $tagRe $tagRe }}
+{{ $headers := findRE $tocRe .Content   }}
 <toc>
     <div class="sticker">
         <ul class="menu-list">
             <li class="toc-h0"><a href="#page-top">{{.Title}}</a></li>
-            {{ $headers := findRE "<h[1234].*?>(.|\n])+?</h[1234]>" .Content   }}
             {{ range $headers }}
                 {{ $tagname := substr . 1 2 }}
                 {{ $header := . | plainify | htmlUnescape }}

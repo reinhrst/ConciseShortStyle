@@ -1,0 +1,45 @@
+@mixin note-specifics($color, $title) {
+    border-left: 1em solid change-color($color, $alpha: .4);
+    background-color: change-color($color, $alpha: .05);
+    &::before {
+        content: $title;
+        background-color: change-color($color, $alpha: .15);
+        border-bottom: 1px solid change-color($color, $alpha: .7);
+    }
+
+}
+.note {
+    @include note-specifics(hsl(0, 0, 60%), "Unknown type");
+    padding: 1.8em .5em .6em;
+    margin: 1em 0;
+
+    color: #000D;
+    font-size: .9em;
+    position: relative;
+    &::before {
+        padding-left: 1.5em;
+        padding-top: .2em;
+        font-family: var(--header-font);
+        font-weight: 800;
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 1.2em;
+    }
+    > *:first-child {
+        margin-top: 0;
+    }
+    > *:last-child {
+        margin-bottom: 0;
+    }
+    &.note--notice {
+        @include note-specifics(hsl(240, 60%, 50%), "Note");
+    }
+    &.note--success {
+        @include note-specifics(hsl(140, 40%, 50%), "Success");
+    }
+    &.note--info {
+        @include note-specifics(hsl(60, 80%, 50%), "Info");
+    }
+}

@@ -1,0 +1,3 @@
+<div class="note note--{{ .Get "type" | default "notice" }}">
+    {{ .Inner | .Page.RenderString }}
+</div>
