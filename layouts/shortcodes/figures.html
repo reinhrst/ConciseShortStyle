@@ -1,0 +1,12 @@
+{{ $srcs := slice }}
+{{ range (seq 100) }}
+    {{ with printf "src%d" . | $.Get }}
+        {{ $srcs = $srcs | append . }}
+    {{ end }}
+{{ end }}
+<figure style="--nr-items: {{len $srcs}};">
+    {{ range $srcs }}
+        <img src="{{ . }}" />
+    {{ end }}
+    <figcaption>{{ .Get "caption" }}</figcaption>
+</figure>

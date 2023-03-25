@@ -1,6 +1,6 @@
 {{ define "main" }}
-{{ with (.Resources.GetMatch "header") }}
-    <img class="headerimage" src="{{ .RelPermalink }}">
+{{ with .Params.header.image }}
+    <img class="headerimage" src="{{ $.Params.header.image }}">
 {{ end }}
 <div class="main-columns">
     {{ range $index, $num := (mul 2 site.Params.progress_bar_height_pixels | seq) }}
