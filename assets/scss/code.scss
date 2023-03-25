@@ -1,6 +1,7 @@
 pre > code {
     padding: .5em;
     background-color: var(--code-background-color);
+    font-size: var(--code-block-font-size);
     display: block;
     width: 100%;
     overflow-x: scroll;
@@ -23,8 +24,8 @@ pre > code {
     }
 }
 
-:not(pre ) > code {
-    background-color: var(--code-color);
+:not(pre) > code {
+    background-color: var(--code-background-color);
     padding: .1em .3em;
 }
 @import "code-light.generated.scss";

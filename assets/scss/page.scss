@@ -1,5 +1,15 @@
 page {
-    h1, h2, h3, h4, h5, h6 {
+    background-color: var(--page-background-color);
+    font-family: var(--body-font);
+    color: var(--text-color);
+  font-size: var(--body-font-size);
+  line-height: var(--body-line-height);
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
         font-family: var(--header-font);
     }
     width: 100vw;
@@ -11,28 +21,28 @@ page {
     }
     div.main-columns {
         display: flex;
+        gap: var(--gap-between-columns);
         justify-content: flex-start;
         width: 100vw;
         padding-top: 1.5em;
 
         @import "metadata.scss";
 
-        .progress {
-            width: 0;
-            clip-path: polygon( 0 var(--progress-bar-offset), 0 calc(var(--progress-bar-offset) + 100%), 100vw calc(var(--progress-bar-offset) + 100%), 100vw Max(var(--progress-bar-offset), calc(100% - 100vh + var(--header-height) + var(--progress-bar-offset))));
-                z-index: 4;
-            > div {
-                height: .5px;
-                width: 100vw;
-                background-color: var(--progress-bar-color);
-                position: fixed;
-                top: calc(var(--header-height) + var(--progress-bar-offset));
-                left: 0;
-            }
+        .progress-bar {
+            width: 100vw;
+            height: var(--progress-bar-height);
+            box-sizing: border-box;
+            border-left-color: var(--progress-bar-color);
+            border-left-style: solid;
+            border-left-width: calc(var(--progress-in-document) * 100vw);
+            z-index: 2;
+            position: fixed;
+            top: calc(var(--header-height));
+            left: 0;
         }
         .left-column {
             width: var(--left-column-width);
-            margin: 0 .2em;
+            margin: 0 0.2em;
             flex-shrink: 0;
         }
         article {
@@ -44,10 +54,9 @@ page {
                 font-family: var(--header-font);
                 font-size: unset;
                 color: var(--article-head-color);
-                border-left: .8em solid var(--article-head-accentuator-color);
-                padding-left: .3em;
-                margin-left: calc(
-                    var(--site-logo-width) - var(--left-column-width));
+                border-left: 0.8em solid var(--article-head-accentuator-color);
+                padding-left: 0.3em;
+                margin-left: calc(var(--site-logo-width) - var(--left-column-width));
                 margin-top: 0;
 
                 &.show-possible-second-line {
@@ -67,7 +76,7 @@ page {
                         transform: translateX(calc(-100% - 1px));
                     }
                     position: sticky;
-                    top: calc(var(--header-height) / 2 - 0.9em / 2);
+                    top: calc(var(--header-height) / 2 - 1em * var(--body-line-height) / 2);
                     z-index: 3;
                     border-left-color: transparent;
                     color: transparent;
@@ -83,14 +92,14 @@ page {
                     text-decoration: inherit;
                     color: var(--link-color);
                 }
-                > figure{
+                > figure {
                     margin: 2em 1em;
                     > img {
                         max-width: 100%;
                     }
                     > figcaption {
                         font-family: var(--header-font);
-                        font-size: .8em;
+                        font-size: 0.8em;
                         text-align: center;
                         color: var(--caption-color);
                         > p:first-child {
@@ -101,7 +110,7 @@ page {
                         }
                     }
                 }
-                >details {
+                > details {
                     margin: 2em 1em;
                 }
             }

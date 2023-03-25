@@ -1,73 +1,88 @@
-$header-background-color: #EEEEEE;
-$code-background-color: hsl(121, 10%, 90%);
+$header-background-color: hsl(30, 10%, 90%);
+$code-background-color: hsl(121, 10%, 85%);
 :root {
-    /* max distance we should stay from right with clickable items*/
-    --page-scrollbar-width: 16px;
-    --page-background-color: white;
-    --header-height: 2.4rem;
-    --header-font: Arial, Helvetica, sans-serif;
-    --metadata-font: Arial, Helvetica, sans-serif;
-    --toc-font: Arial, Helvetica, sans-serif;
-    --body-font: Georgia,Times,serif;
-    --text-color: black;
-    --site-logo-color: black;
-    --menu-color: #384537;
-    --menu-hover-background-color: #E0E7E6;
-    --article-head-color: #384537;
-    --article-head-accentuator-color: #384537;
-    --site-logo-width: 3.4rem;
-    /* if you choose something else, your titles will shift */
-    --left-column-width: var(--site-logo-width);
-    --toc-width: 10rem;
-    --published-color: hsla(121, 10%, 50%);
-    --tag-color: #7C8C7B;
-    --category-color: #5A6959;
-    --head-bottom-border: 0px solid black;
-    --caption-color: hsl(121, 10%, 50%);
-    --link-color: hsl(250, 70%, 40%);
-    --progress-bar-color: hsl(0, 20%, 70%);
-    // unfortunately we cannot set progress bar height in css; it's done in
-    // config.toml though params.progress_bar_height_pixels.
-    --progress-bar-height: ...;
+  /* max distance we should stay from right with clickable items*/
+  --page-scrollbar-width: 16px;
+  --page-background-color: hsl(30, 20%, 95%);
+  --header-height: 2.4rem;
+  --header-font: Arial, Helvetica, sans-serif;
+  --metadata-font: Arial, Helvetica, sans-serif;
+  --toc-font: Arial, Helvetica, sans-serif;
+  --body-font: Georgia, Times, serif;
+  --body-font-size: 18px;
+  --body-line-height: 1.5;
+  --text-color: hsl(0, 0%, 15%);
+  --site-logo-color: black;
+  --menu-color: #384537;
+  --gap-between-columns: 1.5em; 
+  --menu-hover-background-color: #e0e7e6;
+  --article-head-color: #384537;
+  --article-head-accentuator-color: #384537;
+  --site-logo-width: 3.4rem;
+  --left-column-width: var(--site-logo-width);  /* if you choose something else, your titles will shift */
+  --published-color: hsla(121, 10%, 50%);
+  --category-color: #5a6959;
+  --head-bottom-border: 0px solid black;
+  --caption-color: hsl(121, 10%, 50%);
+  --link-color: hsl(250, 70%, 40%);
+  --progress-bar-color: hsl(0, 20%, 70%);
+  --progress-bar-height: 0.1em;
+  --progress-in-document: 0.2; /* will be overriden in JS inline on body element */
 
-    --header-background-color: #{$header-background-color};
-    --header-background-color-transparent: #{change-color($header-background-color, $alpha: 0)};
-    --code-background-color: #{$code-background-color};
-    --code-background-color-transparent: #{change-color($code-background-color, $alpha: 0)};
+  --header-background-color: #{$header-background-color};
+  --header-background-color-transparent: #{change-color(
+      $header-background-color,
+      $alpha: 0
+    )};
+  --code-background-color: #{$code-background-color};
+  --code-background-color-transparent: #{change-color(
+      $code-background-color,
+      $alpha: 0
+    )};
+  --code-block-font-size: .7em;
 
-    font-size: 1.3em;
+  --toc-item-height: 1.8em;
+  --toc-font-size: .75em;
+  --toc-width: min(10rem, 30vw);
+  --toc-hover-width: min(30rem, 50vw);
+  --tag-color: #7c8c7b;
 }
 
 @keyframes blindIn {
-    from {transform: scaleY(0);}
-    to {transform: scaleY(1);}
+  from {
+    transform: scaleY(0);
+  }
+  to {
+    transform: scaleY(1);
+  }
 }
 
 @mixin blindFadeIn {
-    animation: blindIn .2s;
+  animation: blindIn 0.2s;
 }
 
 body {
-    margin: 0;
-    padding: 0;
-    color: var(--text-color);
+  margin: 0;
+  padding: 0;
+  color: var(--text-color);
 }
-
 
 @keyframes blindIn {
-    from {transform: scaleY(0);}
-    to {transform: scaleY(1);}
+  from {
+    transform: scaleY(0);
+  }
+  to {
+    transform: scaleY(1);
+  }
 }
-
 
 :target::before {
-    // targets of links, scroll beyond header
-    content: "";
-    display: block;
-    height: var(--header-height);
-    margin-top: calc(-1 * var(--header-height));
+  // targets of links, scroll beyond header
+  content: "";
+  display: block;
+  height: var(--header-height);
+  margin-top: calc(-1 * var(--header-height));
 }
-
 
 @import "header.scss";
 @import "page.scss";

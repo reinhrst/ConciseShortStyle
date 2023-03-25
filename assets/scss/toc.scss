@@ -1,5 +1,5 @@
 toc {
-    font-size: .75em;
+    font-size: var(--toc-font-size);
     font-family: var(--toc-font);
 
     width: var(--toc-width);
@@ -10,6 +10,18 @@ toc {
         position: sticky;
         top: var(--header-height);
         > ul {
+            position: absolute;
+            right: .5em;
+    transition: opacity .5s;
+    opacity: .5;
+    &:hover {
+        opacity: 1;
+        width: var(--toc-hover-width);
+    }
+    background-color: var(--page-background-color);
+    transition: width 1s;
+
+
             list-style-type: none;
             border: 1px solid black;
             border-radius: 1em;
@@ -19,12 +31,12 @@ toc {
             box-sizing: border-box;
             border-width: calc(1.5em + 1px) 1px;
             li {
-                height: 1.3em;
-                line-height: 1.3em;
+                height: var(--toc-item-height);
+                line-height: var(--toc-item-height);
                 display: block;
                 &:first-child {
                     padding: 0 .5em;
-                    margin-top: -1.5em;
+                    margin-top: calc(-1 * var(--toc-item-height) - 0.2em);
                     color: white;
                 }
                 &:not(:first-child, :last-child) {
@@ -38,13 +50,18 @@ toc {
                             var(--page-background-color) 50%,
                             var(--menu-hover-background-color) 50%);
                         background-size: 200% 200%;
-                        transition: background-position .5s;
+                        transition: background-position .5s, width .5s;
                         &:hover {
-                            position: absolute;
-                            right: calc(.5em + 1px);
-                            width: max-content;
                             background-position: -100% 100%;
                         }
+                    }
+                }
+                &.active {
+                    font-weight: bold;
+                    a:not(:hover) {
+                        border-left: 3px solid black;
+                        min-width: calc(var(--toc-width) - var(--toc-indent) - .5em - 2px - 3px);
+                        padding-left: calc(var(--toc-indent) - 3px);
                     }
                 }
             }

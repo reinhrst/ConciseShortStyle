@@ -1,27 +1,16 @@
-{{ define "main" }}
-{{ with .Params.header.image }}
-    <img class="headerimage" src="{{ $.Params.header.image }}">
+{{ define "main" }} {{ with .Params.header.image }}
+<img class="headerimage" src="{{ $.Params.header.image }}" />
 {{ end }}
 <div class="main-columns">
-    {{ range $index, $num := (mul 2 site.Params.progress_bar_height_pixels | seq) }}
-        <span class="progress" style="--progress-bar-offset: {{div $index 2.0}}px;">
-            <div></div>
-        </span>
-    {{ end }}
-    <span class="left-column">
-        {{ partial "metadata.html" . }}
+  <div class="progress-bar"></div>
+  <span class="left-column"> {{ partial "metadata.html" . }} </span>
+  <article>
+    <span class="sliding-into-header-title">
+      <h1 class="show-possible-second-line" aria-hidden="true">{{ .Title }}</h1>
+      <h1 class="slide-into-header">{{ .Title }}</h1>
     </span>
-    <article>
-        <span class="sliding-into-header-title">
-            <h1 class="show-possible-second-line" aria-hidden="true">
-                {{ .Title }}
-            </h1>
-            <h1 class="slide-into-header">{{ .Title }}</h1>
-        </span>
-        <div class="single-content">
-            {{ .Content }}
-        </div>
-    </article>
-    {{ partial "toc.html" . }}
+    <div class="single-content">{{ .Content }}</div>
+  </article>
+  {{ partial "toc.html" . }}
 </div>
 {{ end }}

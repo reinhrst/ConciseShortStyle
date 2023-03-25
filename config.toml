@@ -3,6 +3,5 @@
     noClasses = false
 
 [params]
-    progress_bar_height_pixels = 3
     tocStartLevel = 1
     tocEndLevel = 4
