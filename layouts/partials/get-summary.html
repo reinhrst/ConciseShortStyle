@@ -1,0 +1,22 @@
+{{/* Gets the summary through a number of steps */}}
+{{ $page := .Page }}
+{{ $matches := findRESubmatch "(?s)<!--begin-summary-->(.*?)<!--end-summary-->" $page.RawContent }}
+{{ if (gt (len $matches) 0) }}
+  {{ range $matches }}
+    {{ $text := (index . 1) | page.RenderString | plainify | htmlUnescape | chomp }}
+    {{ range (split $text "\n") }}
+      <p>{{ . }}</p>
+    {{ end }}
+  {{ end }}
+{{ else }}
+  <p>{{ .Page.Summary }}</p>
+{{ end }}
+{{/*
+
+Looks through the RawContent of the page, looking for <!--begin-summary--> and <!--end-summary--> tags.
+
+If found, it returns the content between these tags (the content is stripped of all HTML tags, but paragarphs are kept).
+If there are multiple of these tag pairs, the content is stiched together.
+
+If there are none of these tag pairs, .Page.Summary is returned (in a single paragarph)
+*/}}

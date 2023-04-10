@@ -3,8 +3,8 @@
     {{- partial "head.html" . -}}
     <body id="page-top">
         {{- partial "header.html" . -}}
-        <page>
-        {{- block "main" . -}}{{- end }}
+        <page class="{{- .BundleType -}}-bundle">
+            {{- block "main" . -}}{{- end }}
         </page>
         {{- partial "footer.html" . -}}
     </body>

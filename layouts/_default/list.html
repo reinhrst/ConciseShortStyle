@@ -1,12 +1,18 @@
 {{ define "main" }}
 <h1>{{ .Title }}</h1>
 {{ range .Pages.ByPublishDate.Reverse }}
-<p>
-    <h3><a class="title" href="{{ .RelPermalink }}">{{ .Title }}</a></h3>
-    {{ partial "metadata.html" . }}
-    <a class="summary" href="{{ .RelPermalink }}">
-        <p>{{ .Summary }}</p>
-    </a>
-</p>
+
+{{ $headerImage := partial
+"get-standard-image" (dict "Resources" .Resources "type" "header") }}
+
+<article {{ with $headerImage }}class="header-image" style="--header-image: url('{{ .RelPermalink }}')"{{ end }}> 
+  <a href="{{ .RelPermalink }}">
+    <h3 class="title">{{ .Title }}</h3>
+    {{ partial "metadata.html" (dict "Page" . "links" false)}}
+    <div class="summary">
+      {{ partial "get-summary.html" (dict "Page" .) }}
+    </div>
+  </a>
+</article>
 {{ end }}
 {{ end }}

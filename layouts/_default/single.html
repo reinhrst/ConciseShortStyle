@@ -3,7 +3,7 @@
 {{ end }}
 <div class="main-columns">
   <div class="progress-bar"></div>
-  <span class="left-column"> {{ partial "metadata.html" . }} </span>
+  <span class="left-column"> {{ partial "metadata.html" (dict "Page" . "links" true)  }} </span>
   <article>
     <span class="sliding-into-header-title">
       <h1 class="show-possible-second-line" aria-hidden="true">{{ .Title }}</h1>

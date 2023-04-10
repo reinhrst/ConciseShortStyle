@@ -1,0 +1,73 @@
+{{/* documenation at bottom */}}
+
+{{ define "partials/get-standard-image.html" }}
+  {{ $VALID_TYPES := dict
+    "header" (dict "extensions" (slice "svg" "png" "jpg") "aspect-ratio" 2 )
+  }}
+
+
+  {{ $Resources := .Resources }}
+  {{ $types := cond (reflect.IsSlice .type) .type (slice .type) }}
+  {{ $return := 0 }}
+  {{ range $types }}
+    {{ if not (index $VALID_TYPES .) }}
+      {{ errorf "Not a valid type: %s " . }}
+    {{ end }}
+
+    {{ if eq $return 0 }}
+      {{ $type := . }}
+      {{ $config := index $VALID_TYPES . }}
+      {{ range $config.extensions }}
+        {{ if eq $return 0 }}
+          {{ $imagePath := printf "%s.%s" $type . }}
+          {{ with $Resources.GetMatch $imagePath }}
+            {{ $return = (dict "image" . "config" $config ) }}
+          {{ end }}
+        {{ end }}
+      {{ end }}
+    {{ end }}
+  {{ end }}
+  {{ if ne $return 0 }}
+
+    {{ with index $return.config "width" }}
+      {{ if ne . $return.image.Width }}
+        {{ errorf "Width ought to be %d but is %d"
+        . $return.image.Width }}
+      {{ end }}
+    {{ end }}
+
+    {{ with index $return.config "height" }}
+      {{ if ne . $return.image.Height }}
+        {{ errorf "Height ought to be %d but is %d"
+        . $return.image.Height }}
+      {{ end }}
+    {{ end }}
+
+    {{ with index $return.config "aspect-ratio" }}
+      {{ if gt (sub (mul . $return.image.Height) $return.image.Width) 1 }}
+        {{ errorf "Aspect-ratio (w/h) ought to be %.01f, but found w: %d, h: %d"
+        . $return.image.Width $return.image.Height }}
+      {{ end }}
+      {{ if lt (sub (mul . $return.image.Height) $return.image.Width) -1 }}
+        {{ errorf "Aspect-ratio (w/h) ought to be %.01f, but found w: %d, h: %d"
+        . $return.image.Width $return.image.Height }}
+      {{ end }}
+    {{ end }}
+    {{ warnf "Dimensions %d %d" $return.image.Width $return.image.Height }}
+  {{ end }}
+  {{ if eq $return 0 }}
+    {{ $return = dict "image" false }}
+  {{ end }}
+  {{ return $return.image }}
+{{ end }}
+
+{{/*
+Retrieves the standard image media from the page bundle, based on you ask.
+Expects a "Resources" parameter, and a "type" parameter. Type is either string or slice of strings (more preferred first).
+
+Tests are done to make sure that the image is of required dimensions
+
+- header (svg,png,jpg), 
+- 
+
+*/}}

@@ -1,26 +1,35 @@
+{{ $links := .links }}
 <div class="metadata">
     <div class="metadata-item published">
-        {{ $dateTime := .PublishDate.Format "2006-01-02" }}
+        {{ $dateTime := .Page.PublishDate.Format "2006-01-02" }}
         <time datetime="{{ $dateTime }}">
-            <year>&#x2019;{{.PublishDate.Format "06" }}</year>
-            <date>{{.PublishDate.Format "Jan 2" }}</date>
+            <year>&#x2019;{{.Page.PublishDate.Format "06" }}</year>
+            <date>{{.Page.PublishDate.Format "Jan 2" }}</date>
     </div>
     <div class="metadata-item readingtime">
         {{.Page.ReadingTime}}
-        {{ cond (gt .ReadingTime 1) "mins" "min" }}
+        {{ cond (gt .Page.ReadingTime 1) "mins" "min" }}
     </div>
 
     <div class="metadata-item categories-and-tags">
-        {{ with .Params.categories }}
+        {{ with .Page.Params.categories }}
             {{ range . }}
-                {{ $href := print (absURL "categories/") (urlize .) }}
-                <a class="category-button" href="{{ $href }}">{{ . }}</a>
+                {{ if $links }}
+                  {{ $href := print (absURL "categories/") (urlize .) }}
+                  <a class="category-button" href="{{ $href }}">{{ . }}</a>
+                {{ else }}
+                  <span class="category">{{ . }}</span>
+                {{ end }}
             {{ end }}
         {{ end }}
-        {{ with .Params.tags }}
+        {{ with .Page.Params.tags }}
             {{ range . }}
-                {{ $href := print (absURL "tags/") (urlize .) }}
-                <a class="tag-button" href="{{ $href }}">{{ . }}</a>
+                {{ if $links }}
+                  {{ $href := print (absURL "tags/") (urlize .) }}
+                  <a class="tag-button" href="{{ $href }}">{{ . }}</a>
+                {{ else }}
+                  <span class="tag">{{ . }}</span>
+                {{ end }}
             {{ end }}
         {{ end }}
     </div>
