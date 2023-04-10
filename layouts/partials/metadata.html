@@ -3,8 +3,8 @@
     <div class="metadata-item published">
         {{ $dateTime := .Page.PublishDate.Format "2006-01-02" }}
         <time datetime="{{ $dateTime }}">
-            <year>&#x2019;{{.Page.PublishDate.Format "06" }}</year>
-            <date>{{.Page.PublishDate.Format "Jan 2" }}</date>
+            <year>{{.Page.PublishDate.Format "2006" }}</year>
+            <date>{{.Page.PublishDate.Format "Jan 02" }}</date>
     </div>
     <div class="metadata-item readingtime">
         {{.Page.ReadingTime}}

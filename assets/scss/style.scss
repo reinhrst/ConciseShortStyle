@@ -9,9 +9,9 @@ $code-background-color: hsl(121, 10%, 85%);
   --metadata-font: Arial, Helvetica, sans-serif;
   --toc-font: Arial, Helvetica, sans-serif;
   --body-font: Georgia, Times, serif;
-  --body-font-size: 18px;
+  --body-font-size: max(12px, min(2vw, 18px));
   --body-line-height: 1.5;
-  --text-color: hsl(0, 0%, 15%);
+  --text-color: hsl(121, 10%, 15%);
   --site-logo-color: black;
   --menu-color: #384537;
   --gap-between-columns: 1.5em; 
@@ -46,6 +46,19 @@ $code-background-color: hsl(121, 10%, 85%);
   --toc-width: min(10rem, 30vw);
   --toc-hover-width: min(30rem, 50vw);
   --tag-color: #7c8c7b;
+
+  /* branch lines are for overview pages (posts/tags/etc) */
+  --branch-article-border-width: 2px;
+  --branch-article-border-color: hsl(121, 10%, 70%);
+  --branch-article-border-radius: 1.5em;
+  --branch-article-title-font-size: 1.5em;
+  --branch-article-metadata-color: hsl(121, 10%, 50%);
+  --branch-article-background-color: hsla(121, 10%, 90%, 80%);
+  --branch-article-background-color-hover: hsla(121, 10%, 100%, 90%);
+  --branch-article-backdrop-filter: blur(10px);
+  --branch-article-preview-width: 80vw;
+  --branch-article-preview-height: max(25vw, 30vh);
+  --branch-article-preview-gap-between-articles: 10vh;
 }
 
 @keyframes blindIn {

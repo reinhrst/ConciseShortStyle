@@ -1,0 +1,32 @@
+.metadata-item {
+  color: var(--published-color);
+  display: inline-block;
+
+  &:not(:last-child)::after {
+    content: "\2022";
+  }
+
+  &.published {
+    &::before {
+      content: "\270E";
+    }
+    year::after {
+      content: ", ";
+    }
+  }
+
+  &.readingtime {
+    &::before {
+      content: "\23F2";
+    }
+  }
+
+  &.categories-and-tags {
+    > * {
+      white-space: nowrap;
+      &::before {
+        content: "#";
+      }
+    }
+  }
+}
