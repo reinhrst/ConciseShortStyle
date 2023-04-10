@@ -26,6 +26,7 @@ pre > code {
 
 :not(pre) > code {
     background-color: var(--code-background-color);
+    font-size: var(--code-inline-font-size);
     padding: .1em .3em;
 }
 @import "code-light.generated.scss";

@@ -26,7 +26,7 @@ $code-background-color: hsl(121, 10%, 85%);
   --caption-color: hsl(121, 10%, 50%);
   --link-color: hsl(250, 70%, 40%);
   --progress-bar-color: hsl(0, 20%, 70%);
-  --progress-bar-height: 0.1em;
+  --progress-bar-height: 0.15em;
   --progress-in-document: 0.2; /* will be overriden in JS inline on body element */
 
   --header-background-color: #{$header-background-color};
@@ -39,7 +39,8 @@ $code-background-color: hsl(121, 10%, 85%);
       $code-background-color,
       $alpha: 0
     )};
-  --code-block-font-size: .7em;
+  --code-block-font-size: .8em;
+  --code-inline-font-size: .9em;
 
   --toc-item-height: 1.8em;
   --toc-font-size: .75em;

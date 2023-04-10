@@ -1,6 +1,6 @@
 div.metadata {
   position: sticky;
-  top: calc(var(--header-height) + 0.2em);
+  top: calc(var(--header-height) + 0.5em);
 
   font-family: var(--metadata-font);
   display: flex;
@@ -17,7 +17,7 @@ div.metadata {
     color: var(--published-color);
     width: 110%;
     year {
-      font-size: 3em;
+      font-size: 1.8em;
       font-weight: 800;
       padding-bottom: 0;
       line-height: 0.8em;
