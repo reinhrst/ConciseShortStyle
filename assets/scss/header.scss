@@ -1,50 +1,80 @@
+:root {
+  --calculated-header-height: calc(
+    var(--header-height) + var(--extra-header-height)
+  );
+}
 header {
-    font-family: var(--header-font);
-    line-height: var(--header-height);
+  font-family: var(--header-font);
+  line-height: var(--header-height);
 
-    display: block;
-    position: fixed;
-    top: 0;
+  display: block;
+  position: fixed;
+  top: 0;
+  height: var(--calculated-header-height);
+  width: 100%;
+  z-index: 4;
+  a {
+    text-decoration: inherit;
+    color: inherit;
+  }
+
+  .sitelogo {
     height: var(--header-height);
-    width: 100%;
+    border: 1px solid green;
+  }
+  &.background,
+  .menu,
+  .sitelogo {
+    background-color: var(--header-background-color);
+  }
+  &.background {
+    z-index: 2;
+    border-bottom: var(--head-bottom-border);
+  }
+  &:not(.background) {
+    display: flex;
+  }
+  .title {
+    height: var(--header-height);
+    flex-grow: 3;
+    flex-basis: 4rem;
+    min-width: 10rem;
+    background: linear-gradient(
+      90deg,
+      var(--header-background-color-transparent) 70%,
+      var(--header-background-color)
+    );
+  }
+  .menu {
+    flex-grow: 1;
+    flex-basis: 4rem;
+  }
+  .tall-header-fade-out {
+    position: absolute;
     z-index: 4;
-    a {
-        text-decoration: inherit;
-        color: inherit;
-    }
+    top: var(--header-height);
+    width: 100%;
+    height: var(--extra-header-height);
+    background: linear-gradient(
+      90deg,
+      var(--header-background-color-transparent) 70%,
+      var(--header-background-color)
+    );
+  }
+  @import "menu.scss";
 
-    &.background, .menu, .sitelogo {
-        background-color: var(--header-background-color);
+  .sitelogo {
+    @include blindFadeIn;
+    margin: 0 0.2em;
+    flex-shrink: 0;
+    font-size: 1.1rem;
+    font-weight: 800;
+    font-family: var(--header-font);
+    color: var(--site-logo-color);
+    width: var(--site-logo-width);
+    overflow: hidden;
+    page & {
+      visibility: hidden;
     }
-    &.background {
-        z-index: 2;
-        border-bottom: var(--head-bottom-border);
-    }
-    &:not(.background) {
-        display: flex;
-    }
-    .title {
-        min-width: 25em;
-        flex-grow: 1;
-        background: linear-gradient(
-        90deg,
-        var(--header-background-color-transparent) 70%,
-        var(--header-background-color));
-    }
-    @import "menu.scss";
-
-    .sitelogo {
-        @include blindFadeIn;
-        margin: 0 .2em;
-        flex-shrink: 0;
-        font-size: 1.1rem;
-        font-weight: 800;
-        font-family: var(--header-font);
-        color: var(--site-logo-color);
-        width: var(--site-logo-width);
-        overflow: hidden;
-        page & {
-            visibility: hidden;
-        }
-    }
+  }
 }

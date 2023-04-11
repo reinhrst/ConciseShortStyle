@@ -53,11 +53,17 @@ input[type="checkbox"]#openverticalmenu {
     visibility: hidden;
 
     &:checked + .menu {
-        height: calc(var(--nr-menu-items) * var(--header-height) + 2 * (
+      position: absolute;
+      z-index: 5;
+      max-width: unset;
+      right: 0;
+        height: calc((var(--nr-menu-items) + 1) * var(--header-height) + 2 * (
         .2em /* padding outer */ + .3em /* padding inner */ + 1px /* border */));
         padding: .2em;
         > .menubox {
             flex-direction: column;
+            flex-wrap: nowrap;
+            justify-content: flex-start;
             border-color: var(--menu-hover-background-color);
             padding: .3em;
             padding-right: calc(.3em + var(--more-width) + var(--page-scrollbar-width));

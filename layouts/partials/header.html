@@ -3,6 +3,7 @@
     text can scroll under (and the title over) -->
 </header>
 <header>
+    <div class="tall-header-fade-out"></div>
     <div class="sitelogo">
         <a href="{{ ref . "/" }}">
             {{ .Site.Title }}
@@ -12,6 +13,7 @@
     <input type="checkbox" id="openverticalmenu" >
     <div class="menu" style="--nr-menu-items: {{ len .Site.Menus.main}}">
         <div class="menubox">
+            <div class="empty-first-menu-item">&nbsp;</div>
             {{ range .Site.Menus.main }}
                 <a class="menu-item" href="{{ .URL }}">
                     {{ if .Pre }}

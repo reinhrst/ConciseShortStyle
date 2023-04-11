@@ -1,10 +1,16 @@
 $header-background-color: hsl(30, 10%, 90%);
 $code-background-color: hsl(121, 10%, 85%);
+$page-background-color: hsl(30, 20%, 95%)
 :root {
   /* max distance we should stay from right with clickable items*/
   --page-scrollbar-width: 16px;
-  --page-background-color: hsl(30, 20%, 95%);
+  --page-background-color: #{$page-background-color};
+  --page-background-color-transparent: #{change-color(
+    $page-background-color,
+    $alpha: 0
+  )};
   --header-height: 2.4rem;
+  --title-plus-date-height: 2.2rem;
   --header-font: Arial, Helvetica, sans-serif;
   --metadata-font: Arial, Helvetica, sans-serif;
   --metadata-font-size: .8em;
@@ -15,12 +21,11 @@ $code-background-color: hsl(121, 10%, 85%);
   --text-color: hsl(121, 10%, 15%);
   --site-logo-color: black;
   --menu-color: #384537;
-  --gap-between-columns: .5rem; 
-  --menu-hover-background-color: #e0e7e6;
+  --menu-hover-background-color: hsl(121, 10%, 70%);
   --article-head-color: #384537;
   --article-head-accentuator-color: #384537;
   --site-logo-width: 3.4rem;
-  --left-column-width: 2rem;
+  --left-column-width: var(--site-logo-width); /* must be equal for header to move in nicely */
   --published-color: hsla(121, 10%, 50%);
   --category-color: #5a6959;
   --head-bottom-border: 0px solid black;
@@ -28,7 +33,8 @@ $code-background-color: hsl(121, 10%, 85%);
   --link-color: hsl(250, 70%, 40%);
   --progress-bar-color: hsl(0, 20%, 70%);
   --progress-bar-height: 0.15em;
-  --progress-in-document: 0.2; /* will be overriden in JS inline on body element */
+  --progress-in-document: 0; /* will be overriden in JS inline on body element */
+  --fadeout-bar-height: 10px;
 
   --header-background-color: #{$header-background-color};
   --header-background-color-transparent: #{change-color(

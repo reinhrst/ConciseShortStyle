@@ -1,0 +1,144 @@
+img.headerimage:first-child {
+  width: 100%;
+}
+
+span.sliding-into-header-title {
+  > h1 {
+    /*
+    The two overlapping headers; one for the first line one for the other lines
+    Only the first line is sticky (so that we only scroll the first line into 
+    the header.
+
+    There is also a small animation on load
+    */
+
+    @include blindFadeIn;
+    font-family: var(--header-font);
+    font-size: unset;
+    color: var(--article-head-color);
+    border-left: 0.8em solid var(--article-head-accentuator-color);
+    padding-left: 0.3em;
+    margin-top: 0;
+
+    &.show-possible-second-line {
+      position: absolute;
+      &::first-line {
+        opacity: 0;
+      }
+    }
+
+    &.slide-into-header {
+      &::before {
+        content: "\2500";
+        display: inline-block;
+        width: 1em;
+        color: var(--article-head-accentuator-color);
+        position: absolute;
+        transform: translateX(calc(-100% - 1px));
+      }
+      position: sticky;
+      top: calc(var(--calculated-header-height) - var(--title-plus-date-height));
+      z-index: 3;
+      border-left-color: transparent;
+      color: transparent;
+      &::first-line {
+        color: var(--article-head-color);
+      }
+    }
+  }
+
+  > .metadata-item {
+    &.published {
+      /*
+    The publication time, which is sticky as well
+    */
+      &::after {
+        content: "\2022";
+      }
+    }
+    &.published,
+    &.readingtime {
+      display: inline-block;
+      position: sticky;
+      top: calc(var(--calculated-header-height) - var(--title-plus-date-height) + 1rem);
+      z-index: 3;
+    }
+    &.categories-and-tags {
+      display: inline;
+      margin-right: 1em;
+    }
+  }
+}
+
+div.main-columns {
+  display: flex;
+  justify-content: flex-start;
+  width: 100vw;
+  padding-top: 1.5em;
+
+  .progress-bar {
+    width: 100vw;
+    height: var(--progress-bar-height);
+    box-sizing: border-box;
+    border-left-color: var(--progress-bar-color);
+    border-left-style: solid;
+    border-left-width: calc(var(--progress-in-document) * 100vw);
+    background-color: var(--page-background-color);
+    z-index: 2;
+    position: fixed;
+    top: var(--calculated-header-height);
+    left: 0;
+  }
+  .fadeout-bar {
+    width: 100vw;
+    height: var(--fadeout-bar-height);
+    position: fixed;
+    z-index: 2;
+    top: calc(var(--calculated-header-height) + var(--progress-bar-height));
+    left: 0;
+    background-image: linear-gradient(
+        var(--page-background-color),
+        var(--page-background-color-transparent));
+  }
+  .left-column {
+    width: var(--left-column-width);
+    margin: 0 0.2em;
+    flex-shrink: 0;
+  }
+  article {
+    min-width: 0;
+    flex-grow: 1;
+    flex-shrink: 1;
+    .single-content {
+      margin: 1em;
+      @import "code.scss";
+      a {
+        text-decoration: inherit;
+        color: var(--link-color);
+      }
+      > figure {
+        margin: 2em 1em;
+        > img {
+          max-width: 100%;
+        }
+        > figcaption {
+          font-family: var(--header-font);
+          font-size: 0.8em;
+          text-align: center;
+          color: var(--caption-color);
+          > p:first-child {
+            margin-top: 0;
+          }
+          > p:last-child {
+            margin-bottom: 0;
+          }
+        }
+      }
+      > details {
+        margin: 2em 1em;
+      }
+    }
+  }
+  @import "toc.scss";
+}
+@import "notes.scss";

@@ -1,8 +1,12 @@
+:root {
+  --extra-header-height: 0px; /* don't change, to be overwriten by media query */
+  font-size: var(--body-font-size);
+}
+
 page {
   background-color: var(--page-background-color);
   font-family: var(--body-font);
   color: var(--text-color);
-  font-size: var(--body-font-size);
   line-height: var(--body-line-height);
   h1,
   h2,
@@ -17,220 +21,22 @@ page {
   margin-top: var(--header-height);
 }
 
+@import "metadata.scss";
 page.branch-bundle {
-  @import "metadata.scss";
-  .metadata-item {
-    display: inline;
-    &.published,
-    &.readingtime {
-      &::after {
-        content: "\2022";
-      }
-    }
-  }
-
-  h3.title {
-    margin: .5em 0 0;
-  }
-
-  article {
-    box-sizing: border-box;
-    width: 100vw;
-    height: calc(
-      var(--branch-article-preview-height) +
-        var(--branch-article-preview-gap-between-articles)
-    );
-    position: relative;
-    &.header-image {
-      background-image: linear-gradient(
-          rgba(255, 255, 255, 1) 5%,
-          rgba(255, 255, 255, 0) 15%,
-          rgba(255, 255, 255, 0) 90%,
-          rgba(255, 255, 255, 1) 95%
-        ),
-        var(--header-image);
-      background-size: cover;
-    }
-    & > a {
-      color: unset;
-      text-decoration: none;
-
-      display: block;
-      padding-left: var(--branch-article-border-radius);
-      padding-right: var(--branch-article-border-radius);
-      background-color: var(--branch-article-background-color);
-      backdrop-filter: var(--branch-article-backdrop-filter);
-      box-sizing: border-box;
-      border-width: var(--branch-article-border-width);
-      border-color: var(--branch-article-border-color);
-      border-style: solid;
-      border-radius: var(--branch-article-border-radius);
-      width: var(--branch-article-preview-width);
-      height: var(--branch-article-preview-height);
-      margin-top: 0;
-      margin-left: calc((100vw - var(--branch-article-preview-width)) / 2);
-      margin-right: calc((100vw - var(--branch-article-preview-width)) / 2);
-      margin-bottom: var(--branch-article-preview-gap-between-articles);
-      position: relative;
-      top: calc(var(--branch-article-preview-gap-between-articles) / 2);
-      transition: background-color 0.2s;
-      &:hover {
-        background-color: var(--branch-article-background-color-hover);
-      }
-      & > div {
-        mask-image: linear-gradient(#000 70%, transparent 95%);
-        height: calc(100% - 2 * var(--branch-article-border-radius));
-        .title {
-          font-family: var(--header-font);
-          font-size: var(--branch-article-title-font-size);
-          color: var(--article-head-color);
-        }
-      }
-    }
-  }
+  @import "page-branch.scss"
 }
 
 page.leaf-bundle {
-  img.headerimage:first-child {
-    width: 100%;
-  }
-
-  span.sliding-into-header-title > h1 {
-    /*
-    The two overlapping headers; one for the first line one for the other lines
-    Only the first line is sticky (so that we only scroll the first line into 
-    the header.
-
-    There is also a small animation on load
-    */
-
-    @include blindFadeIn;
-    font-family: var(--header-font);
-    font-size: unset;
-    color: var(--article-head-color);
-    border-left: 0.8em solid var(--article-head-accentuator-color);
-    padding-left: 0.3em;
-    margin-left: calc(var(--site-logo-width));
-    margin-top: 0;
-
-    &.show-possible-second-line {
-      position: absolute;
-      &::first-line {
-        opacity: 0;
-      }
-    }
-
-    &.slide-into-header {
-      &::before {
-        content: "\2500";
-        display: inline-block;
-        width: 1em;
-        color: var(--article-head-accentuator-color);
-        position: absolute;
-        transform: translateX(calc(-100% - 1px));
-      }
-      position: sticky;
-      top: calc(
-        var(--header-height) / 2 - 1em * var(--body-line-height) / 3 * 2
-      );
-      z-index: 3;
-      border-left-color: transparent;
-      color: transparent;
-      &::first-line {
-        color: var(--article-head-color);
-      }
-    }
-  }
-
-  span.sliding-into-header-title > .metadata-item {
-    &.published {
-      /*
-    The publication time, which is sticky as well
-    */
-      margin-left: calc(var(--site-logo-width) + 2rem);
-      &::after {
-        content: "\2022";
-      }
-    }
-    &.published,
-    &.readingtime {
-      display: inline-block;
-      position: sticky;
-      top: calc(var(--header-height) / 2);
-      z-index: 3;
-    }
-    &.categories-and-tags {
-      display: block;
-      margin-left: calc(var(--site-logo-width) + 2rem);
-      margin-right: 1em;
-    }
-  }
-  @import "metadata.scss";
-
-  div.main-columns {
-    display: flex;
-    gap: var(--gap-between-columns);
-    justify-content: flex-start;
-    width: 100vw;
-    padding-top: 1.5em;
-
-    .progress-bar {
-      width: 100vw;
-      height: var(--progress-bar-height);
-      box-sizing: border-box;
-      border-left-color: var(--progress-bar-color);
-      border-left-style: solid;
-      border-left-width: calc(var(--progress-in-document) * 100vw);
-      z-index: 2;
-      position: fixed;
-      top: calc(var(--header-height));
-      left: 0;
-    }
-    .left-column {
-      width: var(--left-column-width);
-      margin: 0 0.2em;
-      flex-shrink: 0;
-    }
-    article {
-      min-width: 0;
-      flex-grow: 1;
-      flex-shrink: 1;
-      .single-content {
-        margin: 1em;
-        @import "code.scss";
-        a {
-          text-decoration: inherit;
-          color: var(--link-color);
-        }
-        > figure {
-          margin: 2em 1em;
-          > img {
-            max-width: 100%;
-          }
-          > figcaption {
-            font-family: var(--header-font);
-            font-size: 0.8em;
-            text-align: center;
-            color: var(--caption-color);
-            > p:first-child {
-              margin-top: 0;
-            }
-            > p:last-child {
-              margin-bottom: 0;
-            }
-          }
-        }
-        > details {
-          margin: 2em 1em;
-        }
-      }
-    }
-    @import "toc.scss";
-  }
-  @import "notes.scss";
+  @import "page-leaf.scss"
 }
 
 @media print, screen and (max-width: 600px) {
+  :root {
+    --extra-header-height: var(--title-plus-date-height);
+  }
+  header .menu {
+    max-width: 2em;
+  }
   page.leaf-bundle {
     div.main-columns {
       display: block;

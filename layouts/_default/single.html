@@ -1,15 +1,16 @@
 {{ define "main" }} {{ with .Params.header.image }}
 <img class="headerimage" src="{{ $.Params.header.image }}" />
 {{ end }}
+<div class="main-columns{{ if .Params.toc.enable }} has-toc{{else}} no-toc{{end}}">
+  <div class="progress-bar"></div>
+  <div class="fadeout-bar"></div>
+  <span class="left-column"></span>
+  <article>
     <span class="sliding-into-header-title">
       <h1 class="show-possible-second-line" aria-hidden="true">{{ .Title }}</h1>
       <h1 class="slide-into-header">{{ .Title }}</h1>
       {{ partial "metadata.html" (dict "Page" . "links" true)  }}
     </span>
-<div class="main-columns{{ if .Params.toc.enable }} has-toc{{else}} no-toc{{end}}">
-  <div class="progress-bar"></div>
-  <span class="left-column"></span>
-  <article>
     <div class="single-content">{{ .Content }}</div>
   </article>
   {{ partial "toc.html" . }}
