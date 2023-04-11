@@ -2,8 +2,9 @@
 <h1>{{ .Title }}</h1>
 {{ range .Pages.ByPublishDate.Reverse }}
 
-{{ $headerImage := partial
-"get-standard-image" (dict "Resources" .Resources "type" (slice "header" "header-low")) }}
+{{ $headerImage := partial "get-standard-image" (
+  dict "Resources" .Resources "type" (slice "header" "header-low" "header-high"))
+}}
 
 <article {{ with $headerImage }}class="header-image" style="--header-image: url('{{ .RelPermalink }}')"{{ end }}> 
   <a href="{{ .RelPermalink }}">

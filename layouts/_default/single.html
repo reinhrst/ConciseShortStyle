@@ -1,6 +1,7 @@
 {{ define "main" }}
 {{ with (partial "get-standard-image" (
-  dict "Resources" .Resources "type" (slice "header" "header-low"))) }}
+  dict "Resources" .Resources "type" (slice "header" "header-low" "header-high")))
+}}
   <img class="headerimage" src="{{ .RelPermalink }}" />
 {{ end }}
 <div class="main-columns{{ if .Params.toc.enable }} has-toc{{else}} no-toc{{end}}">
