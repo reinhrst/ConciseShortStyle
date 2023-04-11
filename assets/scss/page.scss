@@ -3,6 +3,44 @@
   font-size: var(--body-font-size);
 }
 
+@keyframes blindIn {
+  from {
+    transform: scaleY(0);
+  }
+  to {
+    transform: scaleY(1);
+  }
+}
+
+@mixin blindFadeIn {
+  animation: blindIn 0.2s;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  color: var(--text-color);
+}
+
+@keyframes blindIn {
+  from {
+    transform: scaleY(0);
+  }
+  to {
+    transform: scaleY(1);
+  }
+}
+
+:target::before {
+  // targets of links, scroll beyond header
+  content: "";
+  display: block;
+  height: var(--calculated-header-height);
+  margin-top: calc(-1 * var(--calculated-header-height));
+}
+
+@import "header.scss";
+
 page {
   background-color: var(--page-background-color);
   font-family: var(--body-font);
@@ -18,7 +56,7 @@ page {
   }
   width: 100vw;
   display: block;
-  margin-top: var(--header-height);
+  margin-top: var(--calculated-header-height);
 }
 
 @import "metadata.scss";
