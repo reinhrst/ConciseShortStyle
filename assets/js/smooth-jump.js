@@ -2,7 +2,7 @@ document.addEventListener("DOMContentLoaded", () => {
   console.log("ready")
   document.querySelectorAll("toc a").forEach(el => {
     el.addEventListener("click", (event) => {
-      const target = document.querySelector(el.getAttribute("href"))
+      const target = document.getElementById(el.dataset.tocTargetId)
       if (!target) {
         return;
       }

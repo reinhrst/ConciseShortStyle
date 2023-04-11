@@ -27,7 +27,7 @@ const setProgress = () => {
     for (let i = first_in_view - 1; i >= 0; i--) {
       const id = headers[i].id;
       if (id != null) {
-        const element = toc.querySelector(`a[href="#${id}"]`);
+        const element = toc.querySelector(`a[data-toc-target-id="${id}"]`);
         if (element) {
           const parent = element.parentElement;
           if (!parent.classList.contains("active")) {

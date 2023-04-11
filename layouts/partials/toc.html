@@ -12,7 +12,7 @@
                 {{ $tagname := substr . 1 2 }}
                 {{ $header := . | plainify | htmlUnescape }}
                 <li class="toc-{{$tagname}}">
-                    <a href='#{{ $header | anchorize }}'>{{ $header }}</a>
+                    <a href="#{{ $header | anchorize }}" data-toc-target-id="{{ $header | anchorize }}">{{ $header }}</a>
                 </li>
           {{ end }}
         </ul>
