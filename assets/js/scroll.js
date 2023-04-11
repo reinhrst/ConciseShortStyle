@@ -21,9 +21,12 @@ const setProgress = () => {
       .querySelector("header")
       .getBoundingClientRect().height;
     const headers = [...document.querySelectorAll("h1,h2,h3,h4,h5,h6")];
-    const first_in_view = headers.findIndex(
+    let first_in_view = headers.findIndex(
       (h) => h.getBoundingClientRect().top >= headerBarHeight + ERROR_MARGIN
     ); // not the quickest way
+    if (first_in_view == -1) {
+      first_in_view = headers.length;
+    }
     for (let i = first_in_view - 1; i >= 0; i--) {
       const id = headers[i].id;
       if (id != null) {
