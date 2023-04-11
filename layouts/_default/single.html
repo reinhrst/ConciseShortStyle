@@ -1,5 +1,7 @@
-{{ define "main" }} {{ with .Params.header.image }}
-<img class="headerimage" src="{{ $.Params.header.image }}" />
+{{ define "main" }}
+{{ with (partial "get-standard-image" (
+  dict "Resources" .Resources "type" (slice "header" "header-low"))) }}
+  <img class="headerimage" src="{{ .RelPermalink }}" />
 {{ end }}
 <div class="main-columns{{ if .Params.toc.enable }} has-toc{{else}} no-toc{{end}}">
   <div class="progress-bar"></div>
