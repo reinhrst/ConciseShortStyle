@@ -1,7 +1,7 @@
 const ELEMENT = document.documentElement;
 const STYLE_VAR = "--progress-in-document";
+const ERROR_MARGIN = 10;
 
-const TOC_SELECTED_NR_STYLE_VAR = "--selected-item-number";
 
 const setProgress = () => {
   ELEMENT.style.setProperty(
@@ -22,7 +22,7 @@ const setProgress = () => {
       .getBoundingClientRect().height;
     const headers = [...document.querySelectorAll("h1,h2,h3,h4,h5,h6")];
     const first_in_view = headers.findIndex(
-      (h) => h.getBoundingClientRect().top > headerBarHeight
+      (h) => h.getBoundingClientRect().top >= headerBarHeight + ERROR_MARGIN
     ); // not the quickest way
     for (let i = first_in_view - 1; i >= 0; i--) {
       const id = headers[i].id;
