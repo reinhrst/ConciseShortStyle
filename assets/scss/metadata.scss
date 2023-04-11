@@ -1,0 +1,22 @@
+.metadata-item {
+  font: var(--metadata-font);
+  font-size: var(--metadata-font-size);
+  color: var(--published-color);
+  display: inline;
+
+  &.categories-and-tags {
+    > * {
+      white-space: nowrap;
+      &::before {
+        content: "#";
+      }
+      color: var(--item-color);
+      &.tag-button {
+        --item-color: var(--tag-color);
+      }
+      &.category-button {
+        --item-color: var(--category-color);
+      }
+    }
+  }
+}

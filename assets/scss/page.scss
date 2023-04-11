@@ -18,7 +18,20 @@ page {
 }
 
 page.branch-bundle {
-  @import "metadata-branch.scss";
+  @import "metadata.scss";
+  .metadata-item {
+    display: inline;
+    &.published,
+    &.readingtime {
+      &::after {
+        content: "\2022";
+      }
+    }
+  }
+
+  h3.title {
+    margin: .5em 0 0;
+  }
 
   article {
     box-sizing: border-box;
@@ -83,14 +96,21 @@ page.leaf-bundle {
   }
 
   span.sliding-into-header-title > h1 {
+    /*
+    The two overlapping headers; one for the first line one for the other lines
+    Only the first line is sticky (so that we only scroll the first line into 
+    the header.
+
+    There is also a small animation on load
+    */
+
     @include blindFadeIn;
     font-family: var(--header-font);
     font-size: unset;
     color: var(--article-head-color);
     border-left: 0.8em solid var(--article-head-accentuator-color);
     padding-left: 0.3em;
-    margin-left: var(--site-logo-width);
-    margin-right: var(--site-logo-width);
+    margin-left: calc(var(--site-logo-width));
     margin-top: 0;
 
     &.show-possible-second-line {
@@ -121,18 +141,31 @@ page.leaf-bundle {
       }
     }
   }
-  span.ssliding-into-header-title > div.metadata {
-    margin-left: calc(var(--site-logo-width) + 1.1em);
 
-    .metadata-item.published {
+  span.sliding-into-header-title > .metadata-item {
+    &.published {
+      /*
+    The publication time, which is sticky as well
+    */
+      margin-left: calc(var(--site-logo-width) + 2rem);
+      &::after {
+        content: "\2022";
+      }
+    }
+    &.published,
+    &.readingtime {
+      display: inline-block;
       position: sticky;
-      top: calc(
-        var(--header-height) / 2 - 1em * var(--body-line-height) / 3 * 0
-      );
+      top: calc(var(--header-height) / 2);
       z-index: 3;
     }
-    @import "metadata-branch.scss";
+    &.categories-and-tags {
+      display: block;
+      margin-left: calc(var(--site-logo-width) + 2rem);
+      margin-right: 1em;
+    }
   }
+  @import "metadata.scss";
 
   div.main-columns {
     display: flex;

@@ -1,37 +1,33 @@
 {{ $links := .links }}
-<div class="metadata">
-    <div class="metadata-item published">
-        {{ $dateTime := .Page.PublishDate.Format "2006-01-02" }}
-        <time datetime="{{ $dateTime }}">
-            <year>{{.Page.PublishDate.Format "2006" }}</year>
-            <date>{{.Page.PublishDate.Format "Jan 02" }}</date>
-    </div>
-    <div class="metadata-item readingtime">
-        {{.Page.ReadingTime}}
-        {{ cond (gt .Page.ReadingTime 1) "mins" "min" }}
-    </div>
-
-    <div class="metadata-item categories-and-tags">
-        {{ with .Page.Params.categories }}
-            {{ range . }}
-                {{ if $links }}
-                  {{ $href := print (absURL "categories/") (urlize .) }}
-                  <a class="category-button" href="{{ $href }}">{{ . }}</a>
-                {{ else }}
-                  <span class="category">{{ . }}</span>
-                {{ end }}
-            {{ end }}
-        {{ end }}
-        {{ with .Page.Params.tags }}
-            {{ range . }}
-                {{ if $links }}
-                  {{ $href := print (absURL "tags/") (urlize .) }}
-                  <a class="tag-button" href="{{ $href }}">{{ . }}</a>
-                {{ else }}
-                  <span class="tag">{{ . }}</span>
-                {{ end }}
-            {{ end }}
-        {{ end }}
-    </div>
+<div class="metadata-item published">
+  {{ $dateTime := .Page.PublishDate.Format "2006-01-02" }}
+  <time datetime="{{ $dateTime }}">
+      {{.Page.PublishDate.Format "2006-01-02" }}
+</div>
+<div class="metadata-item readingtime">
+  {{.Page.ReadingTime}}
+  {{ cond (gt .Page.ReadingTime 1) "mins" "min" }}
 </div>
 
+<div class="metadata-item categories-and-tags">
+  {{ with .Page.Params.categories }}
+      {{ range . }}
+          {{ if $links }}
+            {{ $href := print (absURL "categories/") (urlize .) }}
+            <a class="category-button" href="{{ $href }}">{{ . }}</a>
+          {{ else }}
+            <span class="category">{{ . }}</span>
+          {{ end }}
+      {{ end }}
+  {{ end }}
+  {{ with .Page.Params.tags }}
+      {{ range . }}
+          {{ if $links }}
+            {{ $href := print (absURL "tags/") (urlize .) }}
+            <a class="tag-button" href="{{ $href }}">{{ . }}</a>
+          {{ else }}
+            <span class="tag">{{ . }}</span>
+          {{ end }}
+      {{ end }}
+  {{ end }}
+</div>
