@@ -1,9 +1,10 @@
-{{ $startLevel := .Site.Params.tocStartLevel | default 2 }}
-{{ $endLevel := .Site.Params.tocEndLevel | default 3 }}
+{{ $startLevel := .Site.Params.toc.startLevel | default 2 }}
+{{ $endLevel := .Site.Params.toc.endLevel | default 3 }}
 {{ $tagRe := printf "h[%d-%d]" $startLevel $endLevel }}
 {{ $tocRe := printf "<%s.*?>(.|\n])+?</%s>" $tagRe $tagRe }}
 {{ $headers := findRE $tocRe .Content   }}
 <toc>
+  {{if .Params.toc.enable }}
     <div class="sticker">
         <ul class="menu-list">
             <li class="toc-h0"><a href="#page-top">{{.Title}}</a></li>
@@ -16,4 +17,5 @@
           {{ end }}
         </ul>
     </div>
+    {{ end }}
 </toc>

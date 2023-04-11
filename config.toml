@@ -3,5 +3,7 @@
     noClasses = false
 
 [params]
-    tocStartLevel = 1
-    tocEndLevel = 4
+[params.toc]
+    enable = true
+    startLevel = 1
+    endLevel = 4

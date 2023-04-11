@@ -17,6 +17,7 @@
         flex-wrap: wrap;
         justify-content: flex-end;
         max-height: 200%;
+        min-width: .5em;
         position: relative;
         margin-right: calc(var(--more-width) + var(--page-scrollbar-width));
         border: 2px solid var(--header-background-color);
@@ -39,6 +40,7 @@
     }
 
     .menu-item-more {
+        width: .5em;
         position: absolute;
         /* mounting it to bottom means it's hidden if there is only 1 line */
         bottom: calc(var(--header-height) - .1em);

@@ -1,4 +1,7 @@
-toc {
+&.no-toc toc {
+    width: 10em;
+}
+&.has-toc toc {
     font-size: var(--toc-font-size);
     font-family: var(--toc-font);
 

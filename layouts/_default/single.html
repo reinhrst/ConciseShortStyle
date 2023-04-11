@@ -1,14 +1,17 @@
 {{ define "main" }} {{ with .Params.header.image }}
 <img class="headerimage" src="{{ $.Params.header.image }}" />
 {{ end }}
-<div class="main-columns">
+<div class="main-columns-top">
+  <span class="sliding-into-header-title">
+    <h1 class="show-possible-second-line" aria-hidden="true">{{ .Title }}</h1>
+    <h1 class="slide-into-header">{{ .Title }}</h1>
+  {{ partial "metadata.html" (dict "Page" . "links" true)  }}
+  </span>
+</div>
+<div class="main-columns{{ if .Params.toc.enable }} has-toc{{else}} no-toc{{end}}">
   <div class="progress-bar"></div>
-  <span class="left-column"> {{ partial "metadata.html" (dict "Page" . "links" true)  }} </span>
+  <span class="left-column"></span>
   <article>
-    <span class="sliding-into-header-title">
-      <h1 class="show-possible-second-line" aria-hidden="true">{{ .Title }}</h1>
-      <h1 class="slide-into-header">{{ .Title }}</h1>
-    </span>
     <div class="single-content">{{ .Content }}</div>
   </article>
   {{ partial "toc.html" . }}

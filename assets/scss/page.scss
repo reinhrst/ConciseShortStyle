@@ -18,23 +18,24 @@ page {
 }
 
 page.branch-bundle {
-
   @import "metadata-branch.scss";
 
   article {
     box-sizing: border-box;
     width: 100vw;
-    height: calc(var(--branch-article-preview-height) + var(--branch-article-preview-gap-between-articles));
+    height: calc(
+      var(--branch-article-preview-height) +
+        var(--branch-article-preview-gap-between-articles)
+    );
     position: relative;
     &.header-image {
-      background-image:
-      linear-gradient(
-        rgba(255, 255, 255, 1) 5%,
-        rgba(255, 255, 255, 0) 15%,
-        rgba(255, 255, 255, 0) 90%,
-        rgba(255, 255, 255, 1) 95%,
+      background-image: linear-gradient(
+          rgba(255, 255, 255, 1) 5%,
+          rgba(255, 255, 255, 0) 15%,
+          rgba(255, 255, 255, 0) 90%,
+          rgba(255, 255, 255, 1) 95%
         ),
-      var(--header-image);
+        var(--header-image);
       background-size: cover;
     }
     & > a {
@@ -59,7 +60,7 @@ page.branch-bundle {
       margin-bottom: var(--branch-article-preview-gap-between-articles);
       position: relative;
       top: calc(var(--branch-article-preview-gap-between-articles) / 2);
-      transition: background-color .2s;
+      transition: background-color 0.2s;
       &:hover {
         background-color: var(--branch-article-background-color-hover);
       }
@@ -80,14 +81,65 @@ page.leaf-bundle {
   img.headerimage:first-child {
     width: 100%;
   }
+
+  span.sliding-into-header-title > h1 {
+    @include blindFadeIn;
+    font-family: var(--header-font);
+    font-size: unset;
+    color: var(--article-head-color);
+    border-left: 0.8em solid var(--article-head-accentuator-color);
+    padding-left: 0.3em;
+    margin-left: var(--site-logo-width);
+    margin-right: var(--site-logo-width);
+    margin-top: 0;
+
+    &.show-possible-second-line {
+      position: absolute;
+      &::first-line {
+        opacity: 0;
+      }
+    }
+
+    &.slide-into-header {
+      &::before {
+        content: "\2500";
+        display: inline-block;
+        width: 1em;
+        color: var(--article-head-accentuator-color);
+        position: absolute;
+        transform: translateX(calc(-100% - 1px));
+      }
+      position: sticky;
+      top: calc(
+        var(--header-height) / 2 - 1em * var(--body-line-height) / 3 * 2
+      );
+      z-index: 3;
+      border-left-color: transparent;
+      color: transparent;
+      &::first-line {
+        color: var(--article-head-color);
+      }
+    }
+  }
+  span.ssliding-into-header-title > div.metadata {
+    margin-left: calc(var(--site-logo-width) + 1.1em);
+
+    .metadata-item.published {
+      position: sticky;
+      top: calc(
+        var(--header-height) / 2 - 1em * var(--body-line-height) / 3 * 0
+      );
+      z-index: 3;
+    }
+    @import "metadata-branch.scss";
+  }
+
   div.main-columns {
     display: flex;
     gap: var(--gap-between-columns);
     justify-content: flex-start;
     width: 100vw;
     padding-top: 1.5em;
-
-    @import "metadata-leaf.scss";
 
     .progress-bar {
       width: 100vw;
@@ -110,44 +162,6 @@ page.leaf-bundle {
       min-width: 0;
       flex-grow: 1;
       flex-shrink: 1;
-      span.sliding-into-header-title > h1 {
-        @include blindFadeIn;
-        font-family: var(--header-font);
-        font-size: unset;
-        color: var(--article-head-color);
-        border-left: 0.8em solid var(--article-head-accentuator-color);
-        padding-left: 0.3em;
-        margin-left: calc(var(--site-logo-width) - var(--left-column-width));
-        margin-top: 0;
-
-        &.show-possible-second-line {
-          position: absolute;
-          &::first-line {
-            opacity: 0;
-          }
-        }
-
-        &.slide-into-header {
-          &::before {
-            content: "\2500";
-            display: inline-block;
-            width: 1em;
-            color: var(--article-head-accentuator-color);
-            position: absolute;
-            transform: translateX(calc(-100% - 1px));
-          }
-          position: sticky;
-          top: calc(
-            var(--header-height) / 2 - 1em * var(--body-line-height) / 2
-          );
-          z-index: 3;
-          border-left-color: transparent;
-          color: transparent;
-          &::first-line {
-            color: var(--article-head-color);
-          }
-        }
-      }
       .single-content {
         margin: 1em;
         @import "code.scss";
@@ -181,4 +195,13 @@ page.leaf-bundle {
     @import "toc.scss";
   }
   @import "notes.scss";
+}
+
+@media print, screen and (max-width: 600px) {
+  page.leaf-bundle {
+    div.main-columns {
+      display: block;
+      --left-column-width: 0px;
+    }
+  }
 }
