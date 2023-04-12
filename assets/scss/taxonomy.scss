@@ -9,7 +9,7 @@ ul.taxonomy {
     }
   }
 }
-h1.term-kind {
+h1.term-kind > .item {
   &::before {
     content: "#";
   }

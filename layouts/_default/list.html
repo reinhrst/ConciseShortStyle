@@ -1,9 +1,13 @@
 {{ define "main" }}
   <div class="page-header">
-    {{if .Parent }}
-      <a href="{{.Parent.RelPermalink}}">&#x2190; {{.Parent.Title}}</a>
-    {{end}}
-    <h1 class="{{.Kind}}-kind">{{ .Title }}</h1>
+    <h1 class="{{.Kind}}-kind">
+      {{if (and .Parent (ne .Parent.Kind "home")) }}
+        <a href="{{.Parent.RelPermalink}}">{{.Parent.Title}}</a>
+      {{end}}
+      <span class="item">
+        {{ .Title }}
+      </span>
+  </h1>
   </div>
   {{ if (eq .Kind "taxonomy") }}
     <ul class="taxonomy">

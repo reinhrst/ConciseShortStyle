@@ -1,20 +1,18 @@
 @import "taxonomy.scss";
 
 .page-header {
-  font-family: var(--header-font);
-  > * {
-    display: block;
-  }
   > h1 {
-    margin: 0 .4em;
     text-align: center;
-  }
-  > a {
-    position: absolute;
-    color: var(--text-color);
-    margin: 0 1em;
-    font-size: 1.3em;
-    text-decoration: none;
+    > a {
+      color: var(--text-color);
+      text-decoration: none;
+      &::after {
+        content: " \FF1E ";
+        font-size: 1.3em;
+        position: relative;
+        top: .1em;
+      }
+    }
   }
 }
 
