@@ -3,13 +3,11 @@ pre > code {
     background-color: var(--code-background-color);
     font-size: var(--code-block-font-size);
     display: block;
+    box-sizing: border-box;
+
     width: 100%;
     overflow-x: scroll;
     position: relative;
-    &:hover {
-        width: calc(100% + var(--toc-width));
-        z-index: 1;
-    }
     &::after {
         content: "";
         position: absolute;
@@ -29,4 +27,3 @@ pre > code {
     font-size: var(--code-inline-font-size);
     padding: .1em .3em;
 }
-@import "code-light.generated.scss";

@@ -1,6 +1,8 @@
 [markup]
   [markup.highlight]
-    noClasses = false
+    noClasses = true
+    style = 'monokailight'
+    anchorLineNos = true
 
 [params]
 [params.toc]
