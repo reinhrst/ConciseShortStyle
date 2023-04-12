@@ -60,7 +60,7 @@ span.sliding-into-header-title {
     &.readingtime {
       display: inline-block;
       position: sticky;
-      top: calc(var(--calculated-header-height) - var(--title-plus-date-height) + 1rem);
+      top: calc(var(--calculated-header-height) - var(--title-plus-date-height) + 1.1rem);
       z-index: 3;
     }
     &.categories-and-tags {
