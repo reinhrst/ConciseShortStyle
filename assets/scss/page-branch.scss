@@ -1,3 +1,21 @@
+@import "taxonomy.scss";
+
+.page-header {
+  font-family: var(--header-font);
+  > * {
+    display: block;
+  }
+  > h1 {
+    margin: 0 .4em;
+  }
+  > a {
+    color: var(--text-color);
+    margin: 0 0;
+    font-size: 1.3em;
+    text-decoration: none;
+  }
+}
+
 .metadata-item {
   display: inline;
   &.published,
@@ -39,6 +57,7 @@ article {
     padding-right: var(--branch-article-border-radius);
     background-color: var(--branch-article-background-color);
     backdrop-filter: var(--branch-article-backdrop-filter);
+    -webkit-backdrop-filter: var(--branch-article-backdrop-filter);
     box-sizing: border-box;
     border-width: var(--branch-article-border-width);
     border-color: var(--branch-article-border-color);

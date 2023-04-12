@@ -1,0 +1,16 @@
+ul.taxonomy {
+  list-style-type: none;
+  > li > a {
+    font-size: 1.4em;
+    text-decoration: none;
+    color: var(--text-color);
+    &::before {
+      content: "#";
+    }
+  }
+}
+h1.term-kind {
+  &::before {
+    content: "#";
+  }
+}

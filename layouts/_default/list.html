@@ -1,21 +1,32 @@
 {{ define "main" }}
-<h1>{{ .Title }}</h1>
-{{ range .Pages.ByPublishDate.Reverse }}
-
-{{ $headerImage := partial "get-standard-image" (
-  dict "Resources" .Resources "type" (slice "header" "header-low" "header-high"))
-}}
-
-<article {{ with $headerImage }}class="header-image" style="--header-image: url('{{ .RelPermalink }}')"{{ end }}> 
-  <a href="{{ .RelPermalink }}">
-    <div>
-      <h3 class="title">{{ .Title }}</h3>
-      {{ partial "metadata.html" (dict "Page" . "links" false)}}
-      <div class="summary">
-        {{ partial "get-summary.html" (dict "Page" .) }}
-      </div>
-    </div>
-  </a>
-</article>
-{{ end }}
+  <div class="page-header">
+    {{if .Parent }}
+      <a href="{{.Parent.RelPermalink}}">&#x2190; {{.Parent.Title}}</a>
+    {{end}}
+    <h1 class="{{.Kind}}-kind">{{ .Title }}</h1>
+  </div>
+  {{ if (eq .Kind "taxonomy") }}
+    <ul class="taxonomy">
+    {{ range .Pages.ByLinkTitle }}
+<li><a href="{{ .RelPermalink }}">{{ .Title }}</a> ({{ .Pages.Len }})</li>
+    {{ end }}
+    <ul>
+  {{ else }}
+    {{ range .Pages.ByPublishDate.Reverse }}
+      {{ $headerImage := partial "get-standard-image" (
+        dict "Resources" .Resources "type" (slice "header" "header-low" "header-high"))
+      }}
+      <article {{ with $headerImage }}class="header-image" style="--header-image: url('{{ .RelPermalink }}')"{{ end }}> 
+        <a href="{{ .RelPermalink }}">
+          <div>
+            <h3 class="title">{{ .Title }}</h3>
+            {{ partial "metadata.html" (dict "Page" . "links" false)}}
+            <div class="summary">
+              {{ partial "get-summary.html" (dict "Page" .) }}
+            </div>
+          </div>
+        </a>
+      </article>
+    {{ end }}
+  {{ end }}
 {{ end }}

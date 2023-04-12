@@ -20,6 +20,7 @@ body {
   margin: 0;
   padding: 0;
   color: var(--text-color);
+  background-color: var(--page-background-color);
 }
 
 @keyframes blindIn {
@@ -42,7 +43,6 @@ body {
 @import "header.scss";
 
 page {
-  background-color: var(--page-background-color);
   font-family: var(--body-font);
   color: var(--text-color);
   line-height: var(--body-line-height);
