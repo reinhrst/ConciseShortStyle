@@ -9,7 +9,7 @@ figure.figure-with-caption {
     > div.child {
       max-height: var(--figure-with-caption-max-height);
       overflow-y: scroll;
-      > div.highlight > pre.chroma {
+      > div.highlight > pre {
         margin-top: 0;
         margin-bottom: 0;
       }
