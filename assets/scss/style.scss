@@ -67,5 +67,11 @@ $page-background-color: hsl(30, 20%, 95%)
   --branch-article-preview-width: 80vw;
   --branch-article-preview-height: max(25vw, 30vh);
   --branch-article-preview-gap-between-articles: 10vh;
+
+  --table-font: Arial, Helvetica, sans-serif;
+  --table-font-size: 0.9em;
+  --table-header-background-color: hsl(121, 10%, 80%);
+  --table-odd-row-background-color: hsl(121, 10%, 94%);
+  --table-even-row-background-color: hsl(121, 10%, 89%);
 }
 @import "page.scss";

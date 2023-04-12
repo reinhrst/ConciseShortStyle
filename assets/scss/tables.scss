@@ -1,0 +1,35 @@
+table, thead, tbody, tfoot, tr, th, td {
+  /* reset styles: https://stackoverflow.com/a/27851231/1207489 */
+  width: auto;
+  height: auto;
+  margin: 0;
+  padding: 0;
+  border: none;
+  border-collapse: inherit;
+  border-spacing: 0;
+  border-color: inherit;
+  vertical-align: inherit;
+  text-align: left;
+  font-weight: inherit;
+  -webkit-border-horizontal-spacing: 0;
+  -webkit-border-vertical-spacing: 0;
+}
+table {
+  font-family: var(--table-font);
+  font-size: var(--table-font-size);
+  font-variant-numeric: tabular-nums;
+  thead {
+    background-color: var(--table-header-background-color);
+  }
+  th, td {
+    padding: .2em .5em;
+  }
+  tbody {
+    tr:nth-child(2n) {
+      background-color: var(--table-even-row-background-color);
+    }
+    tr:nth-child(2n+1) {
+      background-color: var(--table-odd-row-background-color);
+    }
+  }
+}

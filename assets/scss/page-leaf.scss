@@ -111,6 +111,7 @@ div.main-columns {
     flex-shrink: 1;
     .single-content {
       margin: 1em;
+      @import "tables.scss";
       @import "code.scss";
       a {
         text-decoration: inherit;
