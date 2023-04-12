@@ -21,6 +21,9 @@ body {
   padding: 0;
   color: var(--text-color);
   background-color: var(--page-background-color);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
 @keyframes blindIn {
@@ -42,7 +45,8 @@ body {
 
 @import "header.scss";
 
-page {
+page { /*this is the part between the header and footer*/
+  flex-grow: 1;
   font-family: var(--body-font);
   color: var(--text-color);
   line-height: var(--body-line-height);

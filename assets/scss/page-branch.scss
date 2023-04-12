@@ -7,10 +7,12 @@
   }
   > h1 {
     margin: 0 .4em;
+    text-align: center;
   }
   > a {
+    position: absolute;
     color: var(--text-color);
-    margin: 0 0;
+    margin: 0 1em;
     font-size: 1.3em;
     text-decoration: none;
   }
