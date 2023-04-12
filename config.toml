@@ -4,6 +4,6 @@
 
 [params]
 [params.toc]
-    enable = true
+    enable = false
     startLevel = 1
     endLevel = 4
