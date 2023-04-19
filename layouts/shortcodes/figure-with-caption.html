@@ -1,8 +1,4 @@
-<figure class="figure-with-caption" {{ with (.Get "max-height" )}}style="--figure-with-caption-max-height: {{ . }};"{{end}}>
-    <div class="parent">
-      <div class="child">
-        {{ .Inner | .Page.RenderString }}
-      </div>
-    </div>
-    <figcaption>{{ .Get "caption" | .Page.RenderString }}</figcaption>
+<figure class="figure-with-caption">
+  {{ .Inner | .Page.RenderString }}
+  <figcaption>{{ .Get "caption" | .Page.RenderString }}</figcaption>
 </figure>

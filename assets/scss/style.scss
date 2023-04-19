@@ -46,6 +46,7 @@ $page-background-color: hsl(30, 20%, 95%)
       $code-background-color,
       $alpha: 0
     )};
+  --code-block-max-height: 70vh;
   --code-block-font-size: .8em;
   --code-inline-font-size: .9em;
 

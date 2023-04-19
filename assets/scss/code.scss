@@ -1,29 +1,42 @@
 pre > code {
-    padding: .5em;
-    background-color: var(--code-background-color);
-    font-size: var(--code-block-font-size);
-    display: block;
-    box-sizing: border-box;
+  padding: 0.5em;
+  background-color: var(--code-background-color);
+  font-size: var(--code-block-font-size);
+  display: block;
+  box-sizing: border-box;
 
+  width: 100%;
+  max-height: var(--code-block-max-height);
+  padding: 1em;
+  overflow: scroll;
+}
+
+pre {
+  position: relative;
+  &::after {
+    pointer-events: none;
+    content: "";
+    position: absolute;
+    background: linear-gradient(
+        to left,
+        var(--code-background-color),
+        var(--code-background-color-transparent) 3em,
+      ),
+      linear-gradient(
+        to top,
+        var(--code-background-color),
+        var(--code-background-color-transparent) 3em,
+      );
+    background-size: 100% var(--code-block-max-height);
+    bottom: 0;
+    left: 0;
     width: 100%;
-    overflow-x: scroll;
-    position: relative;
-    &::after {
-        content: "";
-        position: absolute;
-        background: linear-gradient(
-            90deg,
-            var(--code-background-color-transparent),
-            var(--code-background-color));
-        top: 0;
-        bottom: 0;
-        right: 0;
-        width: 1em;
-    }
+    height: 100%;
+  }
 }
 
 :not(pre) > code {
-    background-color: var(--code-background-color);
-    font-size: var(--code-inline-font-size);
-    padding: .1em .3em;
+  background-color: var(--code-background-color);
+  font-size: var(--code-inline-font-size);
+  padding: 0.1em 0.3em;
 }
