@@ -1,16 +1,4 @@
-{{ $requiredParams := (slice
-  "caption"
-) }}
-{{ $optionalParams := (slice
-  "nr-items-horizontally"
-) }}
-{{ $shortcode := . }}
-{{ range $key,$value := .Params }}{{ $shortcode.Scratch.Add "params" (slice $key) }}{{end}}
-{{ $extra := (complement $requiredParams $optionalParams (.Scratch.Get "params")) }}
-{{ $missing := (complement (.Scratch.Get "params") $requiredParams) }}
-{{ if (len $extra) }}{{ errorf "Unregognised parameters for %s: %#v" .Name $extra}}{{end}}
-{{ if (len $missing) }}{{ errorf "Missing parameters for %s: %#v" .Name $extra}}{{end}}
-
+{{ partial "check-parameters.html" (dict "name" .Name "parameters" .Params "requiredParameters" (slice "caption") "optionalParameters" (slice "nr-items-horizontally")) }}
 
 {{ if (len (trim .Inner " \t\n")) }}
   {{ .Scratch.Add "children" (slice ( .Inner | .Page.RenderString )) }}

@@ -1,3 +1,5 @@
+{{ partial "check-parameters.html" (dict "name" .Name "parameters" .Params "requiredParameters" (slice "summary") "optionalParameters" (slice)) }}
+
 <details>
     <summary>{{ .Get "summary" | .Page.RenderString }}</summary>
     {{ .Inner | .Page.RenderString }}

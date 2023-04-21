@@ -1,0 +1,9 @@
+{{if not (reflect.IsSlice .requiredParameters) }}{{errorf "No requiredParameters parameter"}}{{end}}
+{{if not (reflect.IsSlice .optionalParameters) }}{{errorf "No optionalParameters parameter"}}{{end}}
+{{if not (reflect.IsMap .parameters) }}{{errorf "No parameters parameter"}}{{end}}
+{{ $scratch := newScratch }}
+{{ $scratch.Add "params" (slice) }}{{ range $key,$value := .parameters }}{{ $scratch.Add "params" (slice $key) }}{{end}}
+{{ $extra := (complement .requiredParameters .optionalParameters ($scratch.Get "params")) }}
+{{ $missing := (complement ($scratch.Get "params") .requiredParameters) }}
+{{ if (len $missing) }}{{ errorf "Missing parameters for \"%s\": %v" .name $missing}}{{end}}
+{{ if (len $extra) }}{{ errorf "Unrecognised parameters for \"%s\": %v" .name $extra}}{{end}}
