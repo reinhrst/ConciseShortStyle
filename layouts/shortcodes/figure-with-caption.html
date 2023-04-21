@@ -1,4 +1,25 @@
-<figure class="figure-with-caption">
-  {{ .Inner | .Page.RenderString }}
+{{ $requiredParams := (slice
+  "caption"
+) }}
+{{ $optionalParams := (slice
+  "nr-items-horizontally"
+) }}
+{{ $shortcode := . }}
+{{ range $key,$value := .Params }}{{ $shortcode.Scratch.Add "params" (slice $key) }}{{end}}
+{{ $extra := (complement $requiredParams $optionalParams (.Scratch.Get "params")) }}
+{{ $missing := (complement (.Scratch.Get "params") $requiredParams) }}
+{{ if (len $extra) }}{{ errorf "Unregognised parameters for %s: %#v" .Name $extra}}{{end}}
+{{ if (len $missing) }}{{ errorf "Missing parameters for %s: %#v" .Name $extra}}{{end}}
+
+
+{{ if (len (trim .Inner " \t\n")) }}
+  {{ .Scratch.Add "children" (slice ( .Inner | .Page.RenderString )) }}
+{{ end }}
+<figure class="figure-with-caption" style="--nr-items-horizontally: {{ (.Get "nr-items-horizontally")  | default (len (.Scratch.Get "children")) }}">
+  <figure-parent>
+  {{ range (.Scratch.Get "children") }}
+  <figure-child>{{ . }}</figure-child>
+  {{ end }}
+  </figure-parent>
   <figcaption>{{ .Get "caption" | .Page.RenderString }}</figcaption>
 </figure>

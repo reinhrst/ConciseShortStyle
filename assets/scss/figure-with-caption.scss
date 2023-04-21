@@ -1,4 +1,15 @@
 figure.figure-with-caption {
+  > figure-parent {
+    display: flex;
+    gap: 1em;
+    > figure-child {
+      display: inline-block;
+      width: calc((100% - 1em * (var(--nr-items-horizontally) - 1)) / var(--nr-items-horizontally));
+      > img {
+        width: 100%;
+      }
+    }
+  }
   > figcaption {
     margin-top: 10px;
   }

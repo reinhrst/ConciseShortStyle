@@ -1,0 +1,6 @@
+{{ if (eq .Parent.Name "figure-with-caption") }}
+  {{ .Parent.Scratch.Add "children" (slice (.Inner | .Page.RenderString)) }}
+{{ else }}
+  {{ errorf "You need to use %s in a figure-with-caption. Current parent is %s"
+      .Name .Parent.Name }}
+{{end}}
