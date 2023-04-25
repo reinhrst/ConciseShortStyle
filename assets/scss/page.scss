@@ -83,6 +83,9 @@ page.leaf-bundle {
     div.main-columns {
       display: block;
       --left-column-width: 0px;
+      toc {
+        display: none;
+      }
     }
   }
 }
