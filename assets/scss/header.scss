@@ -40,7 +40,7 @@ header {
     min-width: 10rem;
     background: linear-gradient(
       90deg,
-      var(--header-background-color-transparent) 70%,
+      transparent 70%,
       var(--header-background-color)
     );
   }
@@ -56,7 +56,7 @@ header {
     height: var(--extra-header-height);
     background: linear-gradient(
       90deg,
-      var(--header-background-color-transparent) 70%,
+      transparent 70%,
       var(--header-background-color)
     );
   }

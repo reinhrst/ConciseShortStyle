@@ -1,14 +1,9 @@
-$header-background-color: hsl(30, 10%, 90%);
-$code-background-color: hsl(121, 10%, 85%);
-$page-background-color: hsl(30, 20%, 95%)
 :root {
+  --main-color-hue: 121;
+  --secondary-color-hue: 30;
   /* max distance we should stay from right with clickable items*/
   --page-scrollbar-width: 16px;
-  --page-background-color: #{$page-background-color};
-  --page-background-color-transparent: #{change-color(
-    $page-background-color,
-    $alpha: 0
-  )};
+  --page-background-color: hsl(var(--secondary-color-hue) 20% 95%);
   --header-height: 2.4rem;
   --title-plus-date-height: 2.2rem;
   --header-font: Arial, Helvetica, sans-serif;
@@ -18,34 +13,26 @@ $page-background-color: hsl(30, 20%, 95%)
   --body-font: Georgia, Times, serif;
   --body-font-size: max(12px, min(2vw, 18px));
   --body-line-height: 1.5;
-  --text-color: hsl(121, 10%, 15%);
+  --text-color: hsl(var(--main-color-hue), 10%, 15%);
   --site-logo-color: black;
   --menu-color: #384537;
-  --menu-hover-background-color: hsl(121, 10%, 70%);
+  --menu-hover-background-color: hsl(var(--main-color-hue), 10%, 70%);
   --article-head-color: #384537;
   --article-head-accentuator-color: #384537;
   --site-logo-width: 3.4rem;
   --left-column-width: var(--site-logo-width); /* must be equal for header to move in nicely */
-  --published-color: hsla(121, 10%, 50%);
+  --published-color: hsla(var(--main-color-hue), 10%, 50%);
   --category-color: #5a6959;
   --head-bottom-border: 0px solid black;
-  --caption-color: hsl(121, 10%, 50%);
+  --caption-color: hsl(var(--main-color-hue), 10%, 50%);
   --link-color: hsl(250, 70%, 40%);
   --progress-bar-color: hsl(0, 20%, 70%);
   --progress-bar-height: 0.15em;
   --progress-in-document: 0; /* will be overriden in JS inline on body element */
   --fadeout-bar-height: 10px;
 
-  --header-background-color: #{$header-background-color};
-  --header-background-color-transparent: #{change-color(
-      $header-background-color,
-      $alpha: 0
-    )};
-  --code-background-color: #{$code-background-color};
-  --code-background-color-transparent: #{change-color(
-      $code-background-color,
-      $alpha: 0
-    )};
+  --header-background-color: hsl(var(--secondary-color-hue) 10% 90%);
+  --code-background-color: hsl(var(--main-color-hue) 10% 85%);
   --code-block-max-height: 70vh;
   --code-block-font-size: .8em;
   --code-inline-font-size: .9em;
@@ -58,12 +45,12 @@ $page-background-color: hsl(30, 20%, 95%)
 
   /* branch lines are for overview pages (posts/tags/etc) */
   --branch-article-border-width: 2px;
-  --branch-article-border-color: hsl(121, 10%, 70%);
+  --branch-article-border-color: hsl(var(--main-color-hue), 10%, 70%);
   --branch-article-border-radius: 1.5em;
   --branch-article-title-font-size: 1.5em;
-  --branch-article-metadata-color: hsl(121, 10%, 50%);
-  --branch-article-background-color: hsla(121, 10%, 90%, 80%);
-  --branch-article-background-color-hover: hsla(121, 10%, 100%, 90%);
+  --branch-article-metadata-color: hsl(var(--main-color-hue), 10%, 50%);
+  --branch-article-background-color: hsla(var(--main-color-hue), 10%, 90%, 80%);
+  --branch-article-background-color-hover: hsla(var(--main-color-hue), 10%, 100%, 90%);
   --branch-article-backdrop-filter: blur(10px);
   --branch-article-preview-width: 80vw;
   --branch-article-preview-height: max(25vw, 30vh);
@@ -71,8 +58,8 @@ $page-background-color: hsl(30, 20%, 95%)
 
   --table-font: Arial, Helvetica, sans-serif;
   --table-font-size: 0.9em;
-  --table-header-background-color: hsl(121, 10%, 80%);
-  --table-odd-row-background-color: hsl(121, 10%, 94%);
-  --table-even-row-background-color: hsl(121, 10%, 89%);
+  --table-header-background-color: hsl(var(--main-color-hue), 10%, 80%);
+  --table-odd-row-background-color: hsl(var(--main-color-hue), 10%, 94%);
+  --table-even-row-background-color: hsl(var(--main-color-hue), 10%, 89%);
 }
 @import "page.scss";

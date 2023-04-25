@@ -98,7 +98,7 @@ div.main-columns {
     left: 0;
     background-image: linear-gradient(
         var(--page-background-color),
-        var(--page-background-color-transparent));
+        transparent);
   }
   .left-column {
     width: var(--left-column-width);

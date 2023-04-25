@@ -20,12 +20,12 @@ pre {
     background: linear-gradient(
         to left,
         var(--code-background-color),
-        var(--code-background-color-transparent) 3em,
+        transparent 3em,
       ),
       linear-gradient(
         to top,
         var(--code-background-color),
-        var(--code-background-color-transparent) 3em,
+        transparent 3em,
       );
     background-size: 100% var(--code-block-max-height);
     bottom: 0;
