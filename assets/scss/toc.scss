@@ -1,88 +1,88 @@
 &.no-toc toc {
-    width: 10em;
+  width: 10em;
 }
 &.has-toc toc {
-    font-size: var(--toc-font-size);
-    font-family: var(--toc-font);
+  font-size: var(--toc-font-size);
+  font-family: var(--toc-font);
 
-    width: var(--toc-width);
-    flex-grow: 0;
-    flex-shrink: 0;
-    > div.sticker {
-        display: flex;
-        position: sticky;
-        top: var(--header-height);
-        > ul {
-            position: absolute;
-            right: .5em;
-    transition: opacity .5s;
-    opacity: .5;
-    &:hover {
+  width: var(--toc-width);
+  flex-grow: 0;
+  flex-shrink: 0;
+  > div.sticker {
+    display: flex;
+    position: sticky;
+    top: var(--header-height);
+    > ul {
+      position: absolute;
+      right: 0.5em;
+      opacity: 0.7;
+      &:hover {
         opacity: 1;
         width: var(--toc-hover-width);
-    }
-    background-color: var(--page-background-color);
-    transition: width 1s;
-
-
-            list-style-type: none;
-            border: 1px solid black;
-            border-radius: 1em;
-            margin-right: .5em;
-            padding: .2em 0 0 0;
-            width: calc(100% - .5em);
-            box-sizing: border-box;
-            border-width: calc(1.5em + 1px) 1px;
-            li {
-                height: var(--toc-item-height);
-                line-height: var(--toc-item-height);
-                display: block;
-                &:first-child {
-                    padding: 0 .5em;
-                    margin-top: calc(-1 * var(--toc-item-height) - 0.2em);
-                    color: white;
-                }
-                &:not(:first-child, :last-child) {
-                    border-bottom: 1px dotted black;
-                }
-                &:not(:first-child) {
-                    a {
-                        padding-left: var(--toc-indent);
-                        background-image: linear-gradient(
-                            90deg,
-                            var(--page-background-color) 50%,
-                            var(--menu-hover-background-color) 50%);
-                        background-size: 200% 200%;
-                        transition: background-position .5s, width .5s;
-                        &:hover {
-                            background-position: -100% 100%;
-                        }
-                    }
-                }
-                &.active {
-                    font-weight: bold;
-                    a:not(:hover) {
-                        border-left: 3px solid black;
-                        min-width: calc(var(--toc-width) - var(--toc-indent) - .5em - 2px - 3px);
-                        padding-left: calc(var(--toc-indent) - 3px);
-                    }
-                }
-            }
-            a {
-                overflow: hidden;
-                text-overflow: ellipsis;
-                white-space: nowrap;
-                text-decoration: inherit;
-                color: inherit;
-                display: block;
-                min-width: calc(var(--toc-width) - var(--toc-indent) - .5em - 2px);
-            }
-            @for $h from 0 through 6 {
-                li.toc-h#{$h} {
-                    --toc-indent: #{$h * .5em};
-                }
-            }
+      }
+      background-color: var(--page-background-color);
+      transition: width 1s, opacity 0.5s;
+      list-style-type: none;
+      border: 1px solid var(--toc-color);
+      color: var(--toc-color);
+      border-radius: 1em;
+      margin-right: 0.5em;
+      padding: 0.2em 0 0 0;
+      width: calc(100% - 0.5em);
+      box-sizing: border-box;
+      border-width: calc(1.5em + 1px) 1px;
+      li {
+        height: var(--toc-item-height);
+        line-height: var(--toc-item-height);
+        display: block;
+        &:first-child {
+          padding: 0 0.5em;
+          margin-top: calc(-1 * var(--toc-item-height) - 0.2em);
+          color: white;
         }
+        &:not(:first-child, :last-child) {
+          border-bottom: 1px dotted black;
+        }
+        &:not(:first-child) {
+          a {
+            padding-left: var(--toc-indent);
+            background-image: linear-gradient(
+              90deg,
+              var(--page-background-color) 50%,
+              var(--toc-hover-item-color) 50%
+            );
+            background-size: 200% 200%;
+            transition: background-position 0.5s, width 0.5s;
+            &:hover {
+              background-position: -100% 100%;
+            }
+          }
+        }
+        &.active {
+          font-weight: bold;
+          a:not(:hover) {
+            border-left: 3px solid black;
+            min-width: calc(
+              var(--toc-width) - var(--toc-indent) - 0.5em - 2px - 3px
+            );
+            padding-left: calc(var(--toc-indent) - 3px);
+          }
+        }
+      }
+      a {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        text-decoration: inherit;
+        color: inherit;
+        display: block;
+        min-width: calc(var(--toc-width) - var(--toc-indent) - 0.5em - 2px);
+      }
+      @for $h from 0 through 6 {
+        li.toc-h#{$h} {
+          --toc-indent: #{$h * 0.5em};
+        }
+      }
     }
+  }
 }
-

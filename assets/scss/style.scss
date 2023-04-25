@@ -41,7 +41,10 @@
   --toc-font-size: .75em;
   --toc-width: min(15rem, 30vw);
   --toc-hover-width: min(30rem, 50vw);
-  --tag-color: #7c8c7b;
+  --toc-hover-item-color: hsl(var(--main-color-hue) 20% 90%);
+  --toc-color: hsl(var(--main-color-hue) 10% 30%);
+
+  --tag-color: hsl(var(--main-color-hue) 10% 50%);
 
   /* branch lines are for overview pages (posts/tags/etc) */
   --branch-article-border-width: 2px;
