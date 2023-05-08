@@ -48,12 +48,13 @@ span.sliding-into-header-title {
   }
 
   > .metadata-item {
-    &.published {
+    &.readingtime, &.categories-and-tags {
       /*
     The publication time, which is sticky as well
     */
-      &::after {
+      &::before {
         content: "\2022";
+        padding: .2em;
       }
     }
     &.published,
