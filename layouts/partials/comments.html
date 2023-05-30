@@ -1,6 +1,6 @@
 {{ if .Site.Params.comments.utteranc.enabled }}
 <script
-  src="https://utteranc.es/client.js"
+  src="//utteranc.es/client.js"
   repo="{{.Site.Params.comments.utteranc.repo}}"
   issue-term="{{ index .Site.Params.comments.utteranc "issue-term"}}"
   theme="{{.Site.Params.comments.utteranc.theme}}"
@@ -10,7 +10,7 @@
 {{ end }}
 {{ if .Site.Params.comments.giscus.enabled }}
 <script
-  src="https://giscus.app/client.js"
+  src="//giscus.app/client.js"
   {{ range $key, $value := .Site.Params.comments.giscus }}
     {{ if ne $key "enabled" }}
       {{ printf "data-%s" $key | safeHTMLAttr}}="{{ $value }}"
