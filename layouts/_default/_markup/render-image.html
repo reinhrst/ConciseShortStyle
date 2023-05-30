@@ -1,0 +1,10 @@
+{{- $img := .Page.Resources.GetMatch .Destination -}}
+{{- if and (not $img) .Page.File -}}
+{{ $path := path.Join .Page.File.Dir .Destination }}
+{{- $img = resources.Get $path -}}
+{{- end -}}
+{{- if not $img -}}
+{{- errorf "Cannot find %s for %s" .Destination .Page.File -}}
+{{- end -}}
+{{- .Page.Scratch.Add "used-resources" (slice $img) -}}
+<img alt="{{ .Text }}" src="{{ .Destination }}">
