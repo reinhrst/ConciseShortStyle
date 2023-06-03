@@ -6,5 +6,5 @@
 {{- if not $img -}}
 {{- errorf "Cannot find %s for %s" .Destination .Page.File -}}
 {{- end -}}
-{{- .Page.Scratch.Add "used-resources" (slice $img) -}}
+{{- .Page.Scratch.Add "used-resources" (slice $img.Permalink) -}}
 <img alt="{{ .Text }}" src="{{ .Destination }}">

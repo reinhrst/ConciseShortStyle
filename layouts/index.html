@@ -1,18 +1,6 @@
 {{ define "main" }}
   <div class="homepage">
-    {{ with .Params.header }}
-    <div class="headerimage">
-      {{ with .image }}
-        <img src="{{ . | absURL }}" />
-      {{ end }}
-      {{ with .title }}
-        <h3>{{ . }}</h3>
-      {{ end }}
-      {{ with .message }}
-        <div class="message">{{ .message }}</div>
-      {{ end }}
-    </div>
-    {{ end }}
+    {{ partial "headerimage" .Params.header }}
 
     {{ with .Params.bio }}
       <div class="bio">
@@ -44,10 +32,8 @@
     <h2 class="recent-posts">Recent posts</h2>
     {{$blogs := first 5 (where (where site.Pages ".Section" "==" "posts") ".Kind" "==" "page") }}
     {{ range $blogs.ByPublishDate.Reverse }}
-      {{ $headerImage := partial "get-standard-image" (
-        dict "Resources" .Resources "type" (slice "header" "header-low" "header-high"))
-      }}
-      <article {{ with $headerImage }}class="header-image" style="--header-image: url('{{ .RelPermalink }}')"{{ end }}> 
+      {{ $header := .Params.header }}
+      <article {{ if (and $header $header.image)}}class="header-image" style="--header-image: url('{{ (.Resources.Get $header.image).Permalink }}')"{{ end }}> 
         <a href="{{ .RelPermalink }}">
           <div>
             <h3 class="title">{{ .Title }}</h3>

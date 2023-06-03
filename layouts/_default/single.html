@@ -1,11 +1,5 @@
 {{ define "main" }}
-{{ with (partial "get-standard-image" (
-  dict "Resources" .Resources "type" (slice "header" "header-low" "header-high")))
-}}
-<div class="headerimage">
-  <img src="{{ .RelPermalink }}" />
-</div>
-{{ end }}
+{{ partial "headerimage" .Params.header }}
 <div class="main-columns{{ if .Params.toc.enable }} has-toc{{else}} no-toc{{end}}">
   <div class="progress-bar"></div>
   <div class="fadeout-bar"></div>

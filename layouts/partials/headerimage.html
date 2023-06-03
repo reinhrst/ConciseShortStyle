@@ -1,0 +1,14 @@
+{{- $header := . -}}
+{{- with $header -}}
+<div class="headerimage">
+  {{- with .image -}}
+    {{- printf "![%s](%s)" (default "Header" $header.title) . | page.RenderString -}}
+  {{- end -}}
+  {{- with .title -}}
+    <h3>{{ . }}</h3>
+  {{- end -}}
+  {{- with .message -}}
+    <div class="message">{{ . }}</div>
+  {{- end -}}
+</div>
+{{- end -}}
