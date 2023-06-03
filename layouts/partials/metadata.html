@@ -1,9 +1,12 @@
 {{ $links := .links }}
+{{ if .Page.PublishDate }}
 <div class="metadata-item published">
   {{ $dateTime := .Page.PublishDate.Format "2006-01-02" }}
   <time datetime="{{ $dateTime }}">
       {{.Page.PublishDate.Format "2006-01-02" }}
+  </time>
 </div>
+{{ end }}
 <div class="metadata-item readingtime">
   {{.Page.ReadingTime}}
   {{ cond (gt .Page.ReadingTime 1) "mins" "min" }}

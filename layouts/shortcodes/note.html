@@ -1,3 +1,8 @@
-<div class="note note--{{ .Get "type" | default "notice" }}">
+{{- $allowed_types := slice "notice" "success" "info" "warning" "danger" }}
+{{- $type := .Get "type" | default "notice" -}}
+{{- if not (in $allowed_types $type) -}}
+  {{- errorf "type for notice must be one of %s" $allowed_types -}}
+{{- end -}}
+<div class="note note--{{ $type }}">
     {{ .Inner | .Page.RenderString }}
 </div>

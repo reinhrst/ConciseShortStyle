@@ -112,7 +112,6 @@ div.main-columns {
       @import "tables.scss";
       @import "code.scss";
       a {
-        text-decoration: inherit;
         color: var(--link-color);
       }
       > figure {

@@ -9,18 +9,16 @@
 
 }
 .note {
-    @include note-specifics(hsl(0, 0, 60%), "Unknown type");
-    padding: 1.8em .5em .6em;
-    margin: 1em 0;
+    padding: 1.8em 1.5em .6em;
+    margin: 3em 1em;
 
     color: #000D;
     font-size: .9em;
     position: relative;
     &::before {
         padding-left: 1.5em;
-        padding-top: .2em;
         font-family: var(--header-font);
-        font-weight: 800;
+        font-weight: bold;
         position: absolute;
         top: 0;
         left: 0;
@@ -40,6 +38,12 @@
         @include note-specifics(hsl(140, 40%, 50%), "Success");
     }
     &.note--info {
-        @include note-specifics(hsl(60, 80%, 50%), "Info");
+        @include note-specifics(hsl(180, 80%, 50%), "Info");
+    }
+    &.note--warning {
+        @include note-specifics(hsl(60, 80%, 50%), "Warning");
+    }
+    &.note--danger {
+        @include note-specifics(hsl(0, 80%, 50%), "Danger");
     }
 }
