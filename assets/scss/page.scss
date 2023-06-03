@@ -63,11 +63,36 @@ page { /*this is the part between the header and footer*/
   margin-top: var(--calculated-header-height);
 }
 
+a {
+  color: var(--link-color);
+}
+
+.headerimage{
+  position: relative;
+  img {
+    width: 100%;
+  }
+  h3 {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    padding: 0;
+    margin: 0;
+    font-size: 2.3em;
+    text-shadow: 1px 1px 4px rgba(0,0,0,0.5);
+    color: white;
+  }
+}
+
+
 @import "metadata.scss";
 page.branch-bundle {
   @import "page-branch.scss"
 }
 
+div.homepage {
+  @import "homepage.scss"
+}
 page.leaf-bundle {
   @import "page-leaf.scss"
 }

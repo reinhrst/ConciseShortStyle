@@ -1,6 +1,64 @@
 {{ define "main" }}
-<div id="home-jumbotron" class="jumbotron text-center">
-  <h1 class="title">{{ .Site.Title }}</h1>
-</div>
-{{ end }}
+  <div class="homepage">
+    {{ with .Params.header }}
+    <div class="headerimage">
+      {{ with .image }}
+        <img src="{{ . | absURL }}" />
+      {{ end }}
+      {{ with .title }}
+        <h3>{{ . }}</h3>
+      {{ end }}
+      {{ with .message }}
+        <div class="message">{{ .message }}</div>
+      {{ end }}
+    </div>
+    {{ end }}
 
+    {{ with .Params.bio }}
+      <div class="bio">
+        {{ with .image }}
+          <img src="{{ . | absURL }}">
+        {{ end }}
+        {{ with .title }}
+          <h3>{{ . }}</h3>
+        {{ end }}
+        {{ with .description }}
+          <div class="description">{{ . }}</div>
+        {{ end }}
+        {{ with .links }}
+          <div class="links">
+          {{ range . }}
+      <a{{with .href}} href="{{.}}"{{end}}{{with .icon}} class="lineicon {{.}}"{{end}}>
+              {{.text}}
+            </a>
+          {{ end }}
+          </div>
+        {{ end }}
+      </div>
+  
+    {{ end }}
+    <div class="main">
+      {{.Content}}
+    </div>
+
+    <h2 class="recent-posts">Recent posts</h2>
+    {{$blogs := first 5 (where (where site.Pages ".Section" "==" "posts") ".Kind" "==" "page") }}
+    {{ range $blogs.ByPublishDate.Reverse }}
+      {{ $headerImage := partial "get-standard-image" (
+        dict "Resources" .Resources "type" (slice "header" "header-low" "header-high"))
+      }}
+      <article {{ with $headerImage }}class="header-image" style="--header-image: url('{{ .RelPermalink }}')"{{ end }}> 
+        <a href="{{ .RelPermalink }}">
+          <div>
+            <h3 class="title">{{ .Title }}</h3>
+            {{ partial "metadata.html" (dict "Page" . "links" false)}}
+            <div class="summary">
+              {{ partial "get-summary.html" (dict "Page" .) }}
+            </div>
+          </div>
+        </a>
+      </article>
+    {{ end }}
+    <a class="more-posts" href="{{"/posts" | urlize}}">more posts</a>
+  </div>
+{{ end }}

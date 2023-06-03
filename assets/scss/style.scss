@@ -1,3 +1,13 @@
+@font-face {
+  font-family: 'lineicons';
+  src: url('{{(resources.Get "fonts/lineicons.eot").RelPermalink }}');
+  src: url('{{(resources.Get "fonts/lineicons.eot").RelPermalink }}') format('embedded-opentype'), url('{{(resources.Get "fonts/lineicons.woff2").RelPermalink }}') format('woff2'), url('{{(resources.Get "fonts/lineicons.woff").RelPermalink }}') format('woff'), url('{{(resources.Get "fonts/lineicons.ttf").RelPermalink }}') format('truetype'), url('{{(resources.Get "fonts/lineicons.svg").RelPermalink }}') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+
+
 :root {
   --main-color-hue: 121;
   --secondary-color-hue: 30;
@@ -6,10 +16,10 @@
   --page-background-color: hsl(var(--secondary-color-hue) 20% 95%);
   --header-height: 2.4rem;
   --title-plus-date-height: 2.2rem;
-  --header-font: Arial, Helvetica, sans-serif;
-  --metadata-font: Arial, Helvetica, sans-serif;
+  --header-font: -apple-system,BlinkMacSystemFont,"Roboto","Segoe UI","Helvetica Neue","Lucida Grande",Arial,sans-serif;
+  --metadata-font: -apple-system,BlinkMacSystemFont,"Roboto","Segoe UI","Helvetica Neue","Lucida Grande",Arial,sans-serif;
   --metadata-font-size: .8em;
-  --toc-font: Arial, Helvetica, sans-serif;
+  --toc-font: -apple-system,BlinkMacSystemFont,"Roboto","Segoe UI","Helvetica Neue","Lucida Grande",Arial,sans-serif;
   --body-font: Georgia, Times, serif;
   --body-font-size: max(12px, min(2vw, 18px));
   --body-line-height: 1.5;
@@ -25,7 +35,7 @@
   --category-color: #5a6959;
   --head-bottom-border: 0px solid black;
   --caption-color: hsl(var(--main-color-hue), 10%, 50%);
-  --link-color: hsl(250, 70%, 40%);
+  --link-color: hsl(var(--secondary-color-hue), 35%, 30%);
   --progress-bar-color: hsl(0, 20%, 70%);
   --progress-bar-height: 0.15em;
   --progress-in-document: 0; /* will be overriden in JS inline on body element */
@@ -66,3 +76,4 @@
   --table-even-row-background-color: hsl(var(--main-color-hue), 10%, 89%);
 }
 @import "page.scss";
+@import "lineicons.scss";
