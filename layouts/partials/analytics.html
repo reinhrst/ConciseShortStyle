@@ -1,0 +1,9 @@
+{{ if .Site.Params.analytics.getinsights.enabled }}
+<!-- start custom analytics snippet -->
+<script src="//getinsights.io/js/insights.js"></script>
+<script>
+insights.init('{{ .Site.Params.analytics.getinsights.tracking_id  }}');
+insights.trackPages();
+</script>
+<!-- end custom analytics snippet -->
+{{ end }}
