@@ -10,6 +10,7 @@
       <h1 class="slide-into-header">{{ .Title }}</h1>
       {{ partial "metadata.html" (dict "Page" . "links" true)  }}
     </span>
+    {{ partial "series" . }}
     <div class="single-content">{{ .Content }}</div>
   </article>
   {{ partial "toc.html" . }}

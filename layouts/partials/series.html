@@ -1,0 +1,31 @@
+{{- $page := . -}}
+{{- with $page.Params.series -}}
+{{- $series := . -}}
+{{- $allInSeries := where site.Pages.ByDate ".Params.series" "==" $series -}}
+<div class="series">
+  <div class="header">
+    This is part
+    {{ range $i, $p := $allInSeries -}}
+    {{- if eq $p $page -}}
+    {{- add $i 1 -}}
+    {{- end -}}
+    {{- end }}
+    of a (so far) {{ len $allInSeries }} part series on
+    <span class="seriesname">{{$series}}</span>:
+  </div>
+  <ol>
+    {{- range $allInSeries -}}
+    {{if eq . $page }}
+    <li class="selected">
+      <span class="title">{{ .Title }}</span><span class="date">{{ .PublishDate.Format "2006-01-02" }}</span>
+    </li>
+    {{ else }}
+    <li>
+      <a href="{{ .Permalink }}"><span class="title">{{ .Title }}</span></a>
+      <span class="date">{{ .PublishDate.Format "2006-01-02" }}</span>
+    </li>
+    {{end}}
+    {{end}}
+  </ol>
+</div>
+{{- end -}}

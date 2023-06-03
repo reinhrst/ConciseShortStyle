@@ -1,0 +1,46 @@
+.series {
+  margin: 1em;
+  font-size: 0.8em;
+  border: 1px solid #777777;
+  background-color: #d8ebf1;
+  color: #3d4144;
+  padding: 8px;
+  margin-bottom: 18px;
+
+  .header .seriesname {
+    font-style: italic;
+    &::before {
+      font-style: italic;
+      content: '"';
+    }
+    &::after {
+      font-style: italic;
+      content: '"';
+    }
+  }
+
+  li {
+    .date {
+      opacity: .6;
+      padding-left: .5em;
+      &::before {
+        content: "[";
+      }
+      &::after {
+        content: "]";
+      }
+    }
+    &.selected {
+      position: relative;
+      .title {
+        font-weight: bold;
+      }
+      &::before {
+        content: "➞ ";
+        position: absolute;
+        left: -2.5em;
+        top: 0.15em;
+      }
+    }
+  }
+}
