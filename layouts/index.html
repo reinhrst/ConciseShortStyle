@@ -16,7 +16,8 @@
         {{ with .links }}
           <div class="links">
           {{ range . }}
-      <a{{with .href}} href="{{.}}"{{end}}{{with .icon}} class="lineicon {{.}}"{{end}}>
+      <a{{with .href}} href="{{.}}"{{end}}>
+        {{- with .icon }}{{ partial "icon" (dict "icon" .) }}{{end -}}
               {{.text}}
             </a>
           {{ end }}

@@ -1,0 +1,8 @@
+{{- partial "check-parameters.html" (dict
+  "name" .Name
+  "parameters" (default (dict) .Params)
+  "requiredParameters" (slice 0) 
+  "optionalParameters" (slice)
+) -}}
+{{- $icon := .Get 0 -}}
+{{- partial "icon" (dict "icon" $icon) -}}

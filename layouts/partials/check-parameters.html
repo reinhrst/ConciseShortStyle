@@ -1,7 +1,7 @@
 {{/* documentation see bottom */}}
 {{- if not (reflect.IsSlice .requiredParameters) }}{{errorf "No requiredParameters parameter"}}{{end -}}
 {{- if not (reflect.IsSlice .optionalParameters) }}{{errorf "No optionalParameters parameter"}}{{end -}}
-{{- if not (reflect.IsMap .parameters) }}{{errorf "No parameters parameter"}}{{end -}}
+{{- if not (or (reflect.IsMap .parameters) (reflect.IsSlice .parameters)) }}{{errorf "Check-Parameters shortcode: No parameters found for %s" .name}}{{end -}}
 {{- $scratch := newScratch -}}
 {{- $scratch.Add "params" (slice) }}{{ range $key,$value := .parameters }}{{ $scratch.Add "params" (slice $key) }}{{end -}}
 {{ $extra := (complement .requiredParameters .optionalParameters ($scratch.Get "params")) -}}
@@ -20,7 +20,7 @@ Example usage:
 // in Shortcode
 {{ partial "check-parameters.html" (dict
   "name" .Name
-  "parameters" .Params
+  "parameters" (default (dict) .Params)
   "requiredParameters" (slice "caption")
   "optionalParameters" (slice "nr-items-horizontally"))
 }}
@@ -33,3 +33,4 @@ Example usage:
   "optionalParameters" (slice))
 }}
 */}}
+{{- $remove_whitespace_at_bottom := 1 -}}

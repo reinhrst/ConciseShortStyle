@@ -5,6 +5,7 @@
   font-weight: normal;
   font-style: normal;
 }
+/* Note: make sure to add lineicons as first option for all fornts */
 
 
 
@@ -16,11 +17,11 @@
   --page-background-color: hsl(var(--secondary-color-hue) 20% 95%);
   --header-height: 2.4rem;
   --title-plus-date-height: 2.2rem;
-  --header-font: -apple-system,BlinkMacSystemFont,"Roboto","Segoe UI","Helvetica Neue","Lucida Grande",Arial,sans-serif;
-  --metadata-font: -apple-system,BlinkMacSystemFont,"Roboto","Segoe UI","Helvetica Neue","Lucida Grande",Arial,sans-serif;
+  --header-font: lineicons, -apple-system,BlinkMacSystemFont,"Roboto","Segoe UI","Helvetica Neue","Lucida Grande",Arial,sans-serif;
+  --metadata-font: lineicons, -apple-system,BlinkMacSystemFont,"Roboto","Segoe UI","Helvetica Neue","Lucida Grande",Arial,sans-serif;
   --metadata-font-size: .8em;
-  --toc-font: -apple-system,BlinkMacSystemFont,"Roboto","Segoe UI","Helvetica Neue","Lucida Grande",Arial,sans-serif;
-  --body-font: Georgia, Times, serif;
+  --toc-font: lineicons, -apple-system,BlinkMacSystemFont,"Roboto","Segoe UI","Helvetica Neue","Lucida Grande",Arial,sans-serif;
+  --body-font: lineicons, Georgia, Times, serif;
   --body-font-size: max(12px, min(2vw, 18px));
   --body-line-height: 1.5;
   --text-color: hsl(var(--main-color-hue), 10%, 15%);
