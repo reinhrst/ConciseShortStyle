@@ -1,13 +1,26 @@
-{{ partial "check-parameters.html" (dict "name" .Name "parameters" .Params "requiredParameters" (slice "caption") "optionalParameters" (slice "nr-items-horizontally")) }}
+{{ partial "check-parameters.html" (dict
+"name" .Name
+"parameters" (default (dict) .Params)
+"requiredParameters" (slice)
+"optionalParameters" (slice "caption" "nr-items-horizontally"))
+}}
+
 
 {{ if (len (trim .Inner " \t\n")) }}
-  {{ .Scratch.Add "children" (slice ( .Inner | .Page.RenderString )) }}
+  {{ .Scratch.Add "children" (slice (dict "inner" ( .Inner | .Page.RenderString ))) }}
 {{ end }}
-<figure class="figure-with-caption" style="--nr-items-horizontally: {{ (.Get "nr-items-horizontally")  | default (len (.Scratch.Get "children")) }}">
+{{ $nr_items_horizontally := .Get "nr-items-horizontally" | default (len (.Scratch.Get "children" ))}}
+{{ $page := .Page }}
+<figure class="figure-with-caption" style="--nr-items-horizontally: {{ $nr_items_horizontally }}; ">
   <figure-parent>
   {{ range (.Scratch.Get "children") }}
-  <figure-child>{{ . }}</figure-child>
+    <figure-child>
+      <figure>
+        {{ .inner }}
+        {{with .caption}}<figcaption>{{ . | $page.RenderString }}</figcaption>{{end}}
+      </figure>
+    </figure-child>
   {{ end }}
   </figure-parent>
-  <figcaption>{{ .Get "caption" | .Page.RenderString }}</figcaption>
+  {{ with .Get "caption"}}<figcaption>{{ . | $page.RenderString }}</figcaption>{{end}}
 </figure>

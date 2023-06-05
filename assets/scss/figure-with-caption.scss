@@ -1,14 +1,9 @@
 figure.figure-with-caption {
   > figure-parent {
-    display: flex;
-    gap: 1em;
-    > figure-child {
-      display: inline-block;
-      width: calc((100% - 1em * (var(--nr-items-horizontally) - 1)) / var(--nr-items-horizontally));
-      > img {
-        width: 100%;
-      }
-    }
+    display: grid;
+    grid-template-columns: repeat(var(--nr-items-horizontally), 1fr);
+    column-gap: 1em;
+    row-gap: 1em;
   }
   > figcaption {
     margin-top: 10px;

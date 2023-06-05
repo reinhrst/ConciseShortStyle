@@ -116,10 +116,11 @@ div.main-columns {
       }
       > figure {
         margin: 2em 1em;
-        > img {
+        img {
           max-width: 100%;
         }
-        > figcaption {
+        figcaption {
+          margin-top: .8em;
           font-family: var(--header-font);
           font-size: 0.8em;
           text-align: center;

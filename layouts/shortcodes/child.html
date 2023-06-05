@@ -1,5 +1,11 @@
+{{ partial "check-parameters.html" (dict
+"name" .Name
+"parameters" (default (dict) .Params)
+"requiredParameters" (slice)
+"optionalParameters" (slice "caption"))
+}}
 {{ if (eq .Parent.Name "figure-with-caption") }}
-  {{ .Parent.Scratch.Add "children" (slice (.Inner | .Page.RenderString)) }}
+  {{ .Parent.Scratch.Add "children" (slice (dict "inner" (.Inner | .Page.RenderString) "caption" (.Get "caption"))) }}
 {{ else }}
   {{ errorf "You need to use %s in a figure-with-caption. Current parent is %s"
       .Name .Parent.Name }}
