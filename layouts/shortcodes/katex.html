@@ -2,15 +2,19 @@
   "name" .Name
   "parameters" (default (dict) .Params)
   "requiredParameters" (slice ) 
-  "optionalParameters" (slice "inline" 0)
+  "optionalParameters" (slice 0 1 2)
 ) -}}
-{{.Page.Scratch.Set "katex" true}}
-{{if or (.Get "inline") (eq "inline" (.Get 0))}}
-<katex-inline data-source="{{.Inner}}">
-  {{ .Inner }}
-</katex-inline>
-{{else}}
-<katex data-source="{{.Inner}}">
-  {{ .Inner }}
+{{- .Page.Scratch.Set "katex" true -}}
+{{- $name := .Name -}}
+{{- range .Params -}}
+{{- if not (in (slice "inline" "keepfont" "nothrowonerror") .) -}}
+    {{ errorf "Unknown positional parameter %s in %s" . $name -}}
+  {{ end -}}
+{{- end -}}
+{{- $inline := in .Params "inline" -}}
+{{- $keepfont := in .Params "keepfont" -}}
+{{- $throwonerror := not (in .Params "nothrowonerror") -}}
+{{- $tag := cond $inline "katex-inline" "katex-block" -}}
+<katex data-source="{{.Inner | safeHTMLAttr }}"{{if $throwonerror}} data-throw-on-error="true"{{end}}{{if $inline}} data-inline="true"{{end}} class="{{if $keepfont}} keepfont{{end}}">
+  {{ .Inner -}}
 </katex>
-{{end}}
