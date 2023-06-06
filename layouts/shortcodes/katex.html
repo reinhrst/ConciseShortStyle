@@ -1,0 +1,16 @@
+{{- partial "check-parameters.html" (dict
+  "name" .Name
+  "parameters" (default (dict) .Params)
+  "requiredParameters" (slice ) 
+  "optionalParameters" (slice "inline" 0)
+) -}}
+{{.Page.Scratch.Set "katex" true}}
+{{if or (.Get "inline") (eq "inline" (.Get 0))}}
+<katex-inline data-source="{{.Inner}}">
+  {{ .Inner }}
+</katex-inline>
+{{else}}
+<katex data-source="{{.Inner}}">
+  {{ .Inner }}
+</katex>
+{{end}}
