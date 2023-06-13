@@ -6,9 +6,11 @@
     > a {
       color: var(--text-color);
       text-decoration: none;
+      font-size: .5em;
+      font-weight: normal;
       &::after {
         content: " \FF1E ";
-        font-size: 1.3em;
+        font-size: 1em;
         position: relative;
         top: .1em;
       }

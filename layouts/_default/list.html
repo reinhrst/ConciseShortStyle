@@ -12,10 +12,16 @@
   {{ if (eq .Kind "taxonomy") }}
     <ul class="taxonomy">
     {{ range .Pages.ByLinkTitle }}
-<li><a href="{{ .RelPermalink }}">{{ .Title }}</a> ({{ .Pages.Len }})</li>
+<li><a href="{{ .RelPermalink }}">{{ .Title }}</a> ({{ .Pages.Len }}) &mdash; {{ .Params.Description | .RenderString | plainify | htmlUnescape }}</li>
     {{ end }}
     <ul>
   {{ else }}
+  {{ if eq .Kind "term"}}
+    {{ if not .Params.description }}
+      {{ errorf "No %s page for %s" .Parent.Title .Title }}
+    {{ end }}
+      {{ .Params.description | .RenderString }}
+  {{ end }}
     {{ range .Pages.ByPublishDate.Reverse }}
       {{ $header := .Params.header }}
       <article {{ if (and $header $header.image)}}class="header-image" style="--header-image: url('{{ (.Resources.Get $header.image).Permalink }}')"{{ end }}> 

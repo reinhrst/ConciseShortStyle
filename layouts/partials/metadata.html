@@ -16,7 +16,7 @@
   {{ with .Page.Params.categories }}
       {{ range . }}
           {{ if $links }}
-            {{ $href := print (absURL "categories/") (urlize .) }}
+            {{ $href := print (absURL "categories/") (urlize .) "/" }}
             <a class="category-button" href="{{ $href }}">{{ . }}</a>
           {{ else }}
             <span class="category">{{ . }}</span>
@@ -26,7 +26,7 @@
   {{ with .Page.Params.tags }}
       {{ range . }}
           {{ if $links }}
-            {{ $href := print (absURL "tags/") (urlize .) }}
+            {{ $href := print (absURL "tags/") (urlize .) "/" }}
             <a class="tag-button" href="{{ $href }}">{{ . }}</a>
           {{ else }}
             <span class="tag">{{ . }}</span>
