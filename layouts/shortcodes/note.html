@@ -4,7 +4,7 @@
   "requiredParameters" (slice)
   "optionalParameters" (slice "type")
 )}}
-{{- $allowed_types := slice "notice" "success" "info" "warning" "danger" }}
+{{- $allowed_types := slice "notice" "success" "info" "warning" "danger" "update" }}
 {{- $type := .Get "type" | default "notice" -}}
 {{- if not (in $allowed_types $type) -}}
   {{- errorf "type for notice must be one of %s" $allowed_types -}}

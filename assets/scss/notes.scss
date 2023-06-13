@@ -46,4 +46,7 @@
     &.note--danger {
         @include note-specifics(hsl(0, 80%, 50%), "Danger");
     }
+    &.note--update {
+        @include note-specifics(hsl(140, 80%, 50%), "Update");
+    }
 }
