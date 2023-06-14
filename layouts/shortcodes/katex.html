@@ -4,7 +4,7 @@
   "requiredParameters" (slice ) 
   "optionalParameters" (slice 0 1 2)
 ) -}}
-{{- .Page.Scratch.Set "katex" true -}}
+{{- .Page.Store.Set "hasKatex" true -}}
 {{- $name := .Name -}}
 {{- range .Params -}}
 {{- if not (in (slice "inline" "keepfont" "nothrowonerror") .) -}}
