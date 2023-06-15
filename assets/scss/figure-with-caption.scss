@@ -1,7 +1,7 @@
 figure.figure-with-caption {
   > figure-parent {
     display: grid;
-    grid-template-columns: repeat(var(--nr-items-horizontally), 1fr);
+    grid-template-columns: repeat(var(--nr-items-horizontally), minmax(0, 1fr)); // see https://stackoverflow.com/a/52380579/1207489
     column-gap: 1em;
     row-gap: 1em;
   }
