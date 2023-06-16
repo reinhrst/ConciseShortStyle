@@ -1,3 +1,11 @@
+.footnotes {
+  ol:before {
+    content: "Footnotes:";
+    position: relative;
+    left: -2.3em;
+    font-weight: bold;
+  }
+}
 span.sliding-into-header-title {
   > h1 {
     /*
