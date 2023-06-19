@@ -9,5 +9,8 @@
     <script type="module" src="{{ (resources.Get "js/smooth-jump.js" | fingerprint "sha512" ).RelPermalink }}"></script>
     {{ $title := print .Site.Title " | " .Title }}
     {{ if .IsHome }}{{ $title = .Site.Title }}{{ end }}
+{{ range .AlternativeOutputFormats -}}
+    <link rel="{{ .Rel }}" type="{{.MediaType.Type}}" href="{{.Permalink}}" title="{{$title}}" />
+{{ end -}}
     <title>{{ $title }}</title>
 </head>
