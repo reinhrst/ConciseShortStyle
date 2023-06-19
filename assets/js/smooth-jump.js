@@ -8,6 +8,7 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     const headerBarHeight = document.querySelector("header").getBoundingClientRect().height
       document.documentElement.scrollBy({top: target.getBoundingClientRect().top - headerBarHeight, left: 0, behavior: "smooth"})
+      history.pushState({}, "", `#${target.id}`)
       event.preventDefault()
     })
   })
