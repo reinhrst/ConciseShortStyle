@@ -31,8 +31,11 @@
     </div>
 
     <h2 class="recent-posts">Recent posts</h2>
-    {{$blogs := first 5 (where (where site.Pages ".Section" "==" "posts") ".Kind" "==" "page") }}
-    {{ range $blogs.ByPublishDate.Reverse }}
+    
+    {{$number_of_posts := .Params.Get "number-of-posts" | default 5}}
+    {{$all_posts := where (where site.Pages.ByPublishDate.Reverse ".Section" "==" "posts") ".Kind" "==" "page" }}
+    {{$posts := first $number_of_posts $all_posts }}
+    {{ range $posts }}
       {{ $header := .Params.header }}
       <article {{ if (and $header $header.image)}}class="header-image" style="--header-image: url('{{ (.Resources.Get $header.image).Permalink }}')"{{ end }}> 
         <a href="{{ .RelPermalink }}">
@@ -46,6 +49,9 @@
         </a>
       </article>
     {{ end }}
-    <a class="more-posts" href="{{"/posts" | urlize}}">more posts</a>
+    {{ $posts_missing := sub (len $all_posts) $number_of_posts }}
+    {{ if gt $posts_missing 0 }}
+      <a class="more-posts" href="{{"/posts" | urlize}}">see {{ $posts_missing }} more posts</a>
+    {{ end }}
   </div>
 {{ end }}
