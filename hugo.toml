@@ -1,7 +1,7 @@
 [markup]
   [markup.highlight]
     noClasses = true
-    style = 'monokailight'
+    style = 'colorful'
     anchorLineNos = true
 
 [params]
