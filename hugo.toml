@@ -1,6 +1,6 @@
 [markup]
   [markup.highlight]
-    noClasses = true
+    noClasses = false
     style = 'colorful'
     anchorLineNos = true
 
