@@ -9,7 +9,10 @@
     {{ end }}
   {{ end }}
 {{ else }}
-  <p>{{ .Page.Summary }}</p>
+    {{ $text := .Page.Summary | plainify | htmlUnescape | chomp }}
+    {{ range (split $text "\n") }}
+      <p>{{ . }}</p>
+    {{ end }}
 {{ end }}
 {{/*
 
