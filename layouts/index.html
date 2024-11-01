@@ -32,7 +32,7 @@
 
     <h2 class="recent-posts">Recent posts</h2>
     
-    {{$number_of_posts := .Params.Get "number-of-posts" | default 5}}
+    {{$number_of_posts := .Params.number_of_posts | default 5}}
     {{$all_posts := where (where site.Pages.ByPublishDate.Reverse ".Section" "==" "posts") ".Kind" "==" "page" }}
     {{$posts := first $number_of_posts $all_posts }}
     {{ range $posts }}
